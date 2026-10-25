@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { deletePost, formatDate, listAllPosts, restorePost, trashPost, updatePost } from '../lib/posts'
+import Loader from '../components/Loader'
 
 const titleOf = (post) => post.bn?.title || post.en?.title || '(no title)'
 
@@ -89,7 +90,7 @@ export default function AdminDashboard() {
       )}
 
       {error && <p className="error">{error}</p>}
-      {!posts && !error && <p className="muted">Loading…</p>}
+      {!posts && !error && <Loader />}
       {posts && list.length === 0 && (
         <p className="muted">{view === 'trash' ? 'Trash faka.' : 'Ekhono kono blog nei. "Notun blog" e click korun.'}</p>
       )}

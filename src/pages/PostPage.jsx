@@ -5,6 +5,7 @@ import { useLang } from '../context/LangContext'
 import { formatDate, getPost, pickVersion, reelOf } from '../lib/posts'
 import { SIZES, srcSet, withResponsiveImages } from '../lib/images'
 import ReelPlayer from '../components/ReelPlayer'
+import Loader from '../components/Loader'
 
 export default function PostPage() {
   const { id } = useParams()
@@ -19,7 +20,7 @@ export default function PostPage() {
       .catch(() => setPost(null))
   }, [id])
 
-  if (post === undefined) return <p className="container page-pad muted center">{t('loading')}</p>
+  if (post === undefined) return <Loader page />
   if (post === null)
     return (
       <main className="container page-pad center">

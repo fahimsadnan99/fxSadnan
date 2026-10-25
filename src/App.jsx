@@ -2,11 +2,13 @@ import { lazy, Suspense } from 'react'
 import { Link, Route, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Logo from './components/Logo'
+import Loader from './components/Loader'
 import Ticker from './components/Ticker'
 import AdminRoute from './components/AdminRoute'
 import Home from './pages/Home'
 import PostPage from './pages/PostPage'
 import Login from './pages/Login'
+import NewsImpact from './pages/NewsImpact'
 import { useLang } from './context/LangContext'
 
 // Admin pages (and the heavy editor) load only when an admin opens them.
@@ -19,10 +21,11 @@ export default function App() {
     <>
       <Navbar />
       <Ticker />
-      <Suspense fallback={<p className="container page-pad muted">{t('loading')}</p>}>
+      <Suspense fallback={<Loader page />}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/post/:id" element={<PostPage />} />
+          <Route path="/news" element={<NewsImpact />} />
           <Route path="/login" element={<Login />} />
           <Route
             path="/admin"

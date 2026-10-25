@@ -1,0 +1,44 @@
+# Copies ForexFactory's weekly calendar into the `ff-data` branch, which the News Impact page
+# reads from raw.githubusercontent.com (browsers can't fetch the ForexFactory feed directly).
+name: ForexFactory calendar
+
+on:
+  schedule:
+    # Every 3 hours; the feed blocks clients that poll it too often.
+    - cron: '17 */3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency: ff-data
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: main
+
+      - name: Check out data branch
+        run: |
+          if git ls-remote --exit-code --heads "https://github.com/${{ github.repository }}" ff-data; then
+            git clone --depth 1 --branch ff-data "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" data
+          else
+            mkdir data && cd data && git init -b ff-data
+            git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}"
+          fi
+
+      - name: Fetch and merge
+        working-directory: data
+        run: python3 ../main/.github/scripts/forexfactory.py
+
+      - name: Commit
+        working-directory: data
+        run: |
+          git add months
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git -c user.name="github-actions[bot]" -c user.email="41898283+github-actions[bot]@users.noreply.github.com" \
+            commit -m "Update ForexFactory calendar"
+          git push origin ff-data

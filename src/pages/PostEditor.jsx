@@ -4,6 +4,7 @@ import Editor from '../components/Editor'
 import { createPost, emptyVersion, getPost, LANGS, updatePost } from '../lib/posts'
 import { uploadImage, uploadVideo } from '../lib/upload'
 import ReelPlayer from '../components/ReelPlayer'
+import Loader from '../components/Loader'
 
 const LANG_LABEL = { bn: 'বাংলা', en: 'English' }
 
@@ -95,7 +96,7 @@ export default function PostEditor() {
     }).catch((e) => setMessage(e.message))
   }, [id])
 
-  if (!form) return <p className="container page-pad muted">{message || 'Loading…'}</p>
+  if (!form) return message ? <p className="container page-pad muted">{message}</p> : <Loader page />
 
   const setVersion = (lang, patch) => setForm((f) => ({ ...f, [lang]: { ...f[lang], ...patch } }))
 

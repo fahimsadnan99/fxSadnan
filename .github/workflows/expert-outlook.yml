@@ -1,0 +1,52 @@
+# Every 4 hours, asks Claude (with web search) what analysts expect from the coming high-impact
+# news and saves it to the `ff-data` branch, so the News Impact page always has fresh expert views ready.
+# Needs the ANTHROPIC_API_KEY repository secret; without it the job is skipped. Each run costs API credit.
+name: Expert outlook
+
+on:
+  schedule:
+    - cron: '45 */4 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency: ff-data
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+    steps:
+      - name: Skip without an API key
+        if: env.ANTHROPIC_API_KEY == ''
+        run: echo "ANTHROPIC_API_KEY secret is not set; skipping."
+
+      - uses: actions/checkout@v4
+        if: env.ANTHROPIC_API_KEY != ''
+        with:
+          path: main
+
+      - uses: actions/checkout@v4
+        if: env.ANTHROPIC_API_KEY != ''
+        with:
+          ref: ff-data
+          path: data
+
+      - name: Research and save
+        if: env.ANTHROPIC_API_KEY != ''
+        working-directory: data
+        run: |
+          pip install --quiet anthropic
+          python3 ../main/.github/scripts/expert_outlook.py
+
+      - name: Commit
+        if: env.ANTHROPIC_API_KEY != ''
+        working-directory: data
+        run: |
+          git add outlook
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git -c user.name="github-actions[bot]" -c user.email="41898283+github-actions[bot]@users.noreply.github.com" \
+            commit -m "Update expert outlook"
+          git push origin HEAD:ff-data

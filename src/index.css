@@ -218,6 +218,91 @@ code {
 .logo-xl .logo-name {
   letter-spacing: -0.01em;
 }
+.logo-lg {
+  font-size: 2.4rem;
+}
+
+/* ============ Loader (animated logo) ============ */
+.loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 56px 16px;
+}
+.loader-page {
+  min-height: calc(100vh - var(--nav-h) - 120px);
+  justify-content: center;
+}
+.loader .logo {
+  animation: loader-breathe 1.8s ease-in-out infinite;
+}
+/* Each candle (wick + body) grows from its middle, one after another */
+.loader .logo-mark line,
+.loader .logo-mark rect {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: loader-candle 1.2s ease-in-out infinite;
+}
+.loader .logo-mark :nth-child(3),
+.loader .logo-mark :nth-child(4) {
+  animation-delay: 0.15s;
+}
+.loader .logo-mark :nth-child(5),
+.loader .logo-mark :nth-child(6) {
+  animation-delay: 0.3s;
+}
+.loader-bar {
+  position: relative;
+  width: 120px;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--border);
+  overflow: hidden;
+}
+.loader-bar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, transparent, var(--gold), var(--accent), transparent);
+  animation: loader-slide 1.2s ease-in-out infinite;
+}
+@keyframes loader-candle {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.45);
+  }
+}
+@keyframes loader-breathe {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+@keyframes loader-slide {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(250%);
+  }
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
 .brand {
   color: var(--text);
   display: inline-flex;
@@ -1607,4 +1692,342 @@ textarea {
 }
 .reel-field-body .reel-video {
   max-width: 220px;
+}
+
+/* ============ News Impact ============ */
+.nav-link.active {
+  color: var(--accent);
+  border-color: rgba(46, 230, 166, 0.45);
+}
+.nav-label-short {
+  display: none;
+}
+.news-page {
+  max-width: 860px;
+}
+.news-head h1 {
+  font-family: var(--font-display);
+  margin: 0 0 6px;
+}
+.news-intro,
+.news-note,
+.news-disclaimer {
+  color: var(--muted);
+  margin: 0 0 24px;
+}
+.news-disclaimer {
+  font-size: 0.85rem;
+  margin-top: 32px;
+}
+.news-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.news-month {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.news-month h2 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  margin: 0;
+  min-width: 10ch;
+  text-align: center;
+}
+.news-days {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 24px;
+}
+.news-date {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  margin: 0 0 10px;
+  color: var(--muted);
+}
+.news-day.today .news-date {
+  color: var(--text);
+}
+.news-today {
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--on-accent);
+}
+.news-event {
+  padding: 16px 18px;
+  margin-bottom: 10px;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--gold);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+.news-event.impact-high {
+  border-left-color: var(--bear);
+}
+.news-event h4 {
+  margin: 8px 0 6px;
+  font-size: 1.02rem;
+}
+.news-event p {
+  margin: 0 0 6px;
+}
+.news-event-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.news-currency {
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: var(--surface-2);
+  letter-spacing: 0.04em;
+}
+.news-impact {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--gold);
+}
+.impact-high .news-impact {
+  color: var(--bear);
+}
+.news-impact-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.news-approx {
+  color: var(--muted);
+  font-weight: 500;
+}
+@media (max-width: 480px) {
+  .news-event {
+    padding: 14px;
+  }
+  .nav-link {
+    white-space: nowrap;
+  }
+  /* With admin buttons as well there is no room for one row, so they drop below */
+  .nav-right {
+    flex-wrap: wrap;
+    row-gap: 6px;
+  }
+  .nav-label-full {
+    display: none;
+  }
+  .nav-label-short {
+    display: inline;
+  }
+}
+
+.news-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  list-style: none;
+  padding: 0;
+  margin: -8px 0 24px;
+  font-size: 0.8rem;
+}
+.move-up {
+  color: var(--bull);
+}
+.move-down {
+  color: var(--bear);
+}
+.move-flat {
+  color: var(--muted);
+}
+.news-pairs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+}
+.news-pair {
+  padding: 2px 9px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+.news-pair.move-up {
+  color: var(--bull);
+  border-color: rgba(22, 199, 132, 0.4);
+}
+.news-pair.move-down {
+  color: var(--bear);
+  border-color: rgba(234, 57, 67, 0.4);
+}
+
+.news-time {
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+.news-source {
+  margin-left: auto;
+  color: var(--muted);
+  font-weight: 500;
+  font-size: 0.72rem;
+}
+
+.news-expert {
+  margin: 4px 0 0;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  border: 1px solid rgba(46, 230, 166, 0.2);
+}
+.news-expert h5 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 10px;
+  margin: 0 0 6px;
+  font-size: 0.85rem;
+  color: var(--accent);
+}
+.news-expert-bias {
+  font-size: 0.78rem;
+}
+.news-expert-sources {
+  margin: 10px 0 0;
+  font-size: 0.76rem;
+  color: var(--muted);
+}
+.news-expert-sources a {
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.news-expert-sources a:hover {
+  color: var(--text);
+}
+
+.news-expert-same {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.news-loading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  margin: 0 0 24px;
+}
+.news-spinner {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--border-strong);
+  border-top-color: var(--accent);
+  animation: news-spin 0.8s linear infinite;
+}
+@keyframes news-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.week-summary {
+  margin: 0 0 32px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.week-summary h2 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  margin: 0 0 12px;
+}
+.week-summary table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.week-summary th,
+.week-summary td {
+  padding: 10px 8px;
+  text-align: left;
+  vertical-align: top;
+  border-top: 1px solid var(--border);
+}
+.week-summary thead th {
+  border-top: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+.week-summary tbody th {
+  width: 26%;
+  font-weight: 600;
+}
+.week-summary tbody th a {
+  color: var(--text);
+  margin-left: 6px;
+}
+.week-summary tbody th a:hover {
+  color: var(--accent);
+}
+.week-summary-date {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+.week-summary td:last-child {
+  width: 24%;
+}
+.week-summary .news-pairs {
+  margin: 0;
+}
+.news-event:target {
+  box-shadow: var(--glow);
+}
+@media (max-width: 640px) {
+  /* Each row becomes a small card on phones. */
+  .week-summary {
+    padding: 14px;
+  }
+  .week-summary thead {
+    display: none;
+  }
+  .week-summary tr,
+  .week-summary th,
+  .week-summary td {
+    display: block;
+    width: auto !important;
+  }
+  .week-summary tr {
+    padding: 10px 0;
+    border-top: 1px solid var(--border);
+  }
+  .week-summary tbody tr:first-child {
+    border-top: 0;
+  }
+  .week-summary th,
+  .week-summary td {
+    border: 0;
+    padding: 3px 0;
+  }
 }

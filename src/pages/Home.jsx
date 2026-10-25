@@ -4,6 +4,7 @@ import Logo from '../components/Logo'
 import HeroChart from '../components/HeroChart'
 import MarketSessions from '../components/MarketSessions'
 import ReelsRow from '../components/ReelsRow'
+import Loader from '../components/Loader'
 import { useLang } from '../context/LangContext'
 import { listPublishedPosts, pickVersion } from '../lib/posts'
 
@@ -60,7 +61,7 @@ export default function Home() {
       )}
 
       {error && <p className="error">{error}</p>}
-      {!posts && !error && <p className="muted center">{t('loading')}</p>}
+      {!posts && !error && <Loader />}
       {posts && visible.length === 0 && <p className="muted center">{t('noPosts')}</p>}
 
       <div id="posts" />
