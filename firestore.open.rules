@@ -1,0 +1,14 @@
+rules_version = '2';
+// TEMPORARY rules while ADMIN_LOCK is false: anyone can read and write posts.
+// Writing auto-stops after the date below. Replace with firestore.rules before going live.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /posts/{postId} {
+      allow read: if true;
+      allow write: if request.time < timestamp.date(2027, 1, 31);
+    }
+    match /admins/{uid} {
+      allow read, write: if false;
+    }
+  }
+}
