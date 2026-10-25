@@ -2,9 +2,62 @@ import { useEffect, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import Editor from '../components/Editor'
 import { createPost, emptyVersion, getPost, LANGS, updatePost } from '../lib/posts'
-import { uploadImage } from '../lib/upload'
+import { uploadImage, uploadVideo } from '../lib/upload'
+import ReelPlayer from '../components/ReelPlayer'
 
 const LANG_LABEL = { bn: 'বাংলা', en: 'English' }
+
+// Optional vertical reel video for this language version.
+function ReelField({ value, onChange }) {
+  const [progress, setProgress] = useState(null)
+  const [error, setError] = useState('')
+  const input = useRef(null)
+
+  async function pick(file) {
+    if (!file) return
+    setError('')
+    setProgress(0)
+    try {
+      onChange(await uploadVideo(file, setProgress))
+    } catch (e) {
+      setError(e.message)
+    } finally {
+      setProgress(null)
+    }
+  }
+
+  return (
+    <div className="reel-field">
+      <div className="field-label">
+        Reel video <span className="muted small">(optional · vertical 9:16 · English voice · Bangla page eo eta-i dekhabe)</span>
+      </div>
+      <div className="reel-field-body">
+        {value && <ReelPlayer url={value} />}
+        <div className="admin-actions">
+          <button type="button" className="btn btn-ghost" disabled={progress !== null} onClick={() => input.current.click()}>
+            {progress !== null ? `Uploading ${Math.round(progress * 100)}%…` : value ? 'Change video' : '🎬 Upload video'}
+          </button>
+          {value && progress === null && (
+            <button type="button" className="btn btn-ghost" onClick={() => onChange('')}>
+              Remove
+            </button>
+          )}
+        </div>
+        {error && <p className="error small">{error}</p>}
+      </div>
+      <input
+        ref={input}
+        type="file"
+        accept="video/*"
+        hidden
+        onChange={(e) => {
+          pick(e.target.files[0])
+          e.target.value = ''
+        }}
+      />
+    </div>
+  )
+}
 
 // Key points are edited as text (one per line) and stored as an array.
 const toForm = (version) => {
@@ -170,6 +223,8 @@ export default function PostEditor() {
               onChange={(e) => setVersion(lang, { keyPointsText: e.target.value })}
             />
           </label>
+          {/* Reels are English-only; the same reel plays for Bangla readers too. */}
+          {lang === 'en' && <ReelField value={form.en.reelUrl} onChange={(url) => setVersion('en', { reelUrl: url })} />}
         </section>
       ))}
     </main>

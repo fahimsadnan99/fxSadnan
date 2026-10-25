@@ -25,3 +25,32 @@ export async function uploadImage(file, { crop = false } = {}) {
   // Serve a compressed, auto-format version at most 1600px wide.
   return data.secure_url.replace('/upload/', `/upload/${crop ? POST_IMAGE : ORIGINAL_SHAPE}/`)
 }
+
+// Videos can be large, so this uses XHR to report upload progress (0–1). Returns the raw
+// secure_url; lib/video.js derives the playback and poster URLs from it.
+export function uploadVideo(file, onProgress = () => {}) {
+  if (!file.type.startsWith('video/')) return Promise.reject(new Error(`${file.name} is not a video`))
+  if (!CLOUD_NAME || !UPLOAD_PRESET) return Promise.reject(new Error('Cloudinary is not configured (.env.local)'))
+
+  const body = new FormData()
+  body.append('file', file)
+  body.append('upload_preset', UPLOAD_PRESET)
+
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest()
+    xhr.open('POST', `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/video/upload`)
+    xhr.upload.onprogress = (e) => e.lengthComputable && onProgress(e.loaded / e.total)
+    xhr.onerror = () => reject(new Error('Upload failed (network)'))
+    xhr.onload = () => {
+      let data = {}
+      try {
+        data = JSON.parse(xhr.responseText)
+      } catch {
+        // fall through to the generic error below
+      }
+      if (xhr.status >= 200 && xhr.status < 300 && data.secure_url) resolve(data.secure_url)
+      else reject(new Error(data.error?.message || 'Upload failed'))
+    }
+    xhr.send(body)
+  })
+}

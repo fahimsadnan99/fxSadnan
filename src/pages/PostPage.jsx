@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import DOMPurify from 'dompurify'
 import { useLang } from '../context/LangContext'
-import { formatDate, getPost, pickVersion } from '../lib/posts'
+import { formatDate, getPost, pickVersion, reelOf } from '../lib/posts'
 import { SIZES, srcSet, withResponsiveImages } from '../lib/images'
+import ReelPlayer from '../components/ReelPlayer'
 
 export default function PostPage() {
   const { id } = useParams()
@@ -14,7 +15,7 @@ export default function PostPage() {
     setPost(undefined)
     // Unpublished posts are blocked by Firestore rules for readers, which surfaces as an error.
     getPost(id)
-      .then(setPost)
+      .then((p) => setPost(p?.deleted ? null : p))
       .catch(() => setPost(null))
   }, [id])
 
@@ -62,6 +63,13 @@ export default function PostPage() {
 
         <div className="container narrow">
           {v.isFallback && <p className="notice">{t('fallback')}</p>}
+
+          {reelOf(post) && (
+            <div className="post-reel">
+              <span className="kicker">🎬 {t('reels')}</span>
+              <ReelPlayer url={reelOf(post)} />
+            </div>
+          )}
 
           <div className="prose post-body" dangerouslySetInnerHTML={{ __html: withResponsiveImages(DOMPurify.sanitize(v.content)) }} />
 

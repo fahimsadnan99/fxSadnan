@@ -3,6 +3,7 @@ import PostCard from '../components/PostCard'
 import Logo from '../components/Logo'
 import HeroChart from '../components/HeroChart'
 import MarketSessions from '../components/MarketSessions'
+import ReelsRow from '../components/ReelsRow'
 import { useLang } from '../context/LangContext'
 import { listPublishedPosts, pickVersion } from '../lib/posts'
 
@@ -63,6 +64,7 @@ export default function Home() {
       {posts && visible.length === 0 && <p className="muted center">{t('noPosts')}</p>}
 
       <div id="posts" />
+      {posts && <ReelsRow posts={posts} />}
       {featured && (
         <section className="section">
           <h2 className="section-title">
