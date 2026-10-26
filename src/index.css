@@ -404,6 +404,90 @@ code {
   justify-content: flex-end;
 }
 
+.nav-menu-btn {
+  display: none;
+}
+.nav-menu-icon {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 16px;
+  height: 12px;
+}
+.nav-menu-icon span {
+  display: block;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform 0.25s, opacity 0.2s;
+}
+.nav-menu-btn[aria-expanded='true'] {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.nav-menu-btn[aria-expanded='true'] .nav-menu-icon span:nth-child(1) {
+  transform: translateY(5px) rotate(45deg);
+}
+.nav-menu-btn[aria-expanded='true'] .nav-menu-icon span:nth-child(2) {
+  opacity: 0;
+}
+.nav-menu-btn[aria-expanded='true'] .nav-menu-icon span:nth-child(3) {
+  transform: translateY(-5px) rotate(-45deg);
+}
+
+/* Phones and small tablets: links collapse into a dropdown under the Menu button */
+@media (max-width: 640px) {
+  .nav-inner {
+    flex-wrap: nowrap;
+    position: relative;
+  }
+  .nav-menu-btn {
+    display: inline-flex;
+  }
+  .nav-right {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    width: min(260px, calc(100vw - 32px));
+    flex-direction: column;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    gap: 6px;
+    padding: 10px;
+    background: var(--surface-solid);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-lg);
+  }
+  .nav-right.open {
+    display: flex;
+    animation: nav-drop 0.18s ease-out;
+  }
+  .nav-right .btn {
+    justify-content: flex-start;
+    padding: 10px 14px;
+    font-size: 0.95rem;
+    border-color: transparent;
+  }
+  .nav-right .nav-link.active {
+    border-color: rgba(46, 230, 166, 0.45);
+  }
+  .nav-right .lang-toggle {
+    align-self: stretch;
+    margin-block: 4px;
+  }
+  .nav-right .lang-toggle button {
+    flex: 1;
+  }
+}
+@keyframes nav-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
 .lang-toggle {
   display: inline-flex;
   padding: 3px;
@@ -437,23 +521,6 @@ code {
   .logo-md {
     font-size: 1.3rem;
   }
-  /* Keep logo, language toggle and admin buttons on one row on phones */
-  .nav-inner {
-    flex-wrap: nowrap;
-    gap: 8px;
-  }
-  .nav-right {
-    flex-wrap: nowrap;
-    gap: 6px;
-  }
-  .nav-right .btn-sm {
-    padding: 5px 9px;
-    font-size: 0.78rem;
-  }
-  .lang-toggle button {
-    padding: 4px 9px;
-    font-size: 0.78rem;
-  }
 }
 @media (max-width: 359px) {
   .container {
@@ -461,21 +528,6 @@ code {
   }
   .logo-md {
     font-size: 1.08rem;
-  }
-  .nav-inner,
-  .nav-right {
-    gap: 4px;
-  }
-  .nav-right .btn-sm {
-    padding: 4px 7px;
-    font-size: 0.72rem;
-  }
-  .lang-toggle {
-    padding: 2px;
-  }
-  .lang-toggle button {
-    padding: 3px 7px;
-    font-size: 0.72rem;
   }
 }
 
@@ -1817,14 +1869,6 @@ textarea {
 @media (max-width: 480px) {
   .news-event {
     padding: 14px;
-  }
-  .nav-link {
-    white-space: nowrap;
-  }
-  /* With admin buttons as well there is no room for one row, so they drop below */
-  .nav-right {
-    flex-wrap: wrap;
-    row-gap: 6px;
   }
 }
 
