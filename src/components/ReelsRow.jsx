@@ -29,9 +29,11 @@ export default function ReelsRow({ posts, title, grid = false }) {
 
   return (
     <section className="section">
-      <h2 className="section-title">
-        <span>{title ?? `🎬 ${t('reels')}`}</span>
-      </h2>
+      {title !== false && (
+        <h2 className="section-title">
+          <span>{title ?? `🎬 ${t('reels')}`}</span>
+        </h2>
+      )}
       <div className={grid ? 'topic-grid' : 'reels-row'}>
         {reels.map(({ post, v, url }) => (
           <button key={post.id} className="reel-card" onClick={() => setOpen({ post, url })} lang={v.lang}>

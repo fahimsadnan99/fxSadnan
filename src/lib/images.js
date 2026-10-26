@@ -15,11 +15,17 @@ export const SIZES = {
   featured: '(max-width: 859px) 100vw, 680px',
 }
 
-// Adds srcset/sizes and lazy loading to every <img> in already-sanitized post HTML.
+// Older in-post photos were stored cropped to 16:9; Cloudinary still has the original,
+// so dropping the crop from the URL shows the whole image.
+export const uncropped = (url) => url?.replace('c_fill,g_auto,ar_16:9,w_1600', 'w_1600,c_limit') ?? url
+
+// Shows every photo whole, and adds srcset/sizes and lazy loading to every <img> in already-sanitized post HTML.
 export function withResponsiveImages(html) {
   const doc = new DOMParser().parseFromString(html, 'text/html')
   doc.querySelectorAll('img').forEach((img) => {
-    const set = srcSet(img.getAttribute('src'))
+    const src = uncropped(img.getAttribute('src'))
+    img.setAttribute('src', src)
+    const set = srcSet(src)
     if (set) {
       img.setAttribute('srcset', set)
       img.setAttribute('sizes', SIZES.postBody)

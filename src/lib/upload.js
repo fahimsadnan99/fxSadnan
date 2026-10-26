@@ -2,12 +2,10 @@
 const CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME
 const UPLOAD_PRESET = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET
 
-// In-post photos all share one size, so `crop` cuts them to 16:9. Cloudinary's g_auto
-// picks the important part (faces, main subject) to keep. Keep in sync with --post-img-ratio.
-const POST_IMAGE = 'f_auto,q_auto,c_fill,g_auto,ar_16:9,w_1600'
+// Images keep their original shape (never cropped), scaled down to at most 1600px wide.
 const ORIGINAL_SHAPE = 'f_auto,q_auto,w_1600,c_limit'
 
-export async function uploadImage(file, { crop = false } = {}) {
+export async function uploadImage(file) {
   if (!file.type.startsWith('image/')) throw new Error(`${file.name} is not an image`)
   if (!CLOUD_NAME || !UPLOAD_PRESET) throw new Error('Cloudinary is not configured (.env.local)')
 
@@ -23,7 +21,7 @@ export async function uploadImage(file, { crop = false } = {}) {
   if (!res.ok) throw new Error(data.error?.message || 'Upload failed')
 
   // Serve a compressed, auto-format version at most 1600px wide.
-  return data.secure_url.replace('/upload/', `/upload/${crop ? POST_IMAGE : ORIGINAL_SHAPE}/`)
+  return data.secure_url.replace('/upload/', `/upload/${ORIGINAL_SHAPE}/`)
 }
 
 // Videos can be large, so this uses XHR to report upload progress (0–1). Returns the raw

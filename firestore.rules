@@ -2,21 +2,16 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // Admin = a document with the user's UID exists in /admins (create it by hand in the console).
+    // Admin = signed in as the one admin account (same email as ADMIN_EMAIL in src/config.js).
     function isAdmin() {
       return request.auth != null
-        && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+        && request.auth.token.email == 'admin@fxsadnan.com';
     }
 
     match /posts/{postId} {
-      // Anyone can read published posts; only admins see drafts or write.
+      // Anyone can read published posts; only the admin sees drafts or writes.
       allow read: if resource.data.published == true || isAdmin();
       allow create, update, delete: if isAdmin();
-    }
-
-    match /admins/{uid} {
-      allow read: if request.auth != null && request.auth.uid == uid;
-      allow write: if false;
     }
   }
 }

@@ -710,24 +710,6 @@ code {
   }
 }
 
-.topic-filter {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 40px;
-  overflow-x: auto;
-  padding-bottom: 4px;
-  scrollbar-width: none;
-  justify-content: flex-start;
-}
-.topic-filter::-webkit-scrollbar {
-  display: none;
-}
-@media (min-width: 768px) {
-  .topic-filter {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-}
 .pill {
   flex: none;
   border: 1px solid var(--border-strong);
@@ -857,7 +839,7 @@ code {
 .card-img video {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
   transition: transform 0.7s ease;
 }
@@ -1038,8 +1020,7 @@ code {
 .post-cover {
   display: block;
   width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
+  height: auto;
   border-radius: var(--radius);
   margin-bottom: 44px;
   border: 1px solid var(--border);
@@ -1174,16 +1155,11 @@ code {
 .prose li::marker {
   color: var(--accent);
 }
-/* Every photo in a post: full width, same 16:9 shape (keep in sync with upload.js) */
-.prose {
-  --post-img-ratio: 16 / 9;
-}
+/* Every photo in a post: full width, in its own shape so nothing is cut off */
 .prose img {
   display: block;
   width: 100% !important;
   height: auto !important;
-  aspect-ratio: var(--post-img-ratio);
-  object-fit: cover;
   border-radius: var(--radius-sm);
   margin: 2em 0;
   background: var(--surface-2);
@@ -1307,16 +1283,39 @@ code {
   color: var(--bull);
 }
 
-.login {
-  max-width: 420px;
-  margin: 24px auto;
+.code-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgba(3, 6, 12, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.code-modal .panel {
+  width: 100%;
+  max-width: 380px;
   display: grid;
   gap: 16px;
+  background: var(--surface-solid);
 }
-.login h1 {
-  margin: 0 0 4px;
+.code-modal h2 {
+  margin: 0;
   font-family: var(--font-display);
-  text-align: center;
+}
+.code-modal p {
+  margin: 0;
+  color: var(--muted);
+}
+.code-modal .error {
+  color: var(--danger);
+}
+.code-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
 }
 
 label {
@@ -1702,9 +1701,6 @@ textarea {
   color: var(--accent);
   border-color: rgba(46, 230, 166, 0.45);
 }
-.nav-label-short {
-  display: none;
-}
 .news-page {
   max-width: 860px;
 }
@@ -1829,12 +1825,6 @@ textarea {
   .nav-right {
     flex-wrap: wrap;
     row-gap: 6px;
-  }
-  .nav-label-full {
-    display: none;
-  }
-  .nav-label-short {
-    display: inline;
   }
 }
 

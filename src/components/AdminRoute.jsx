@@ -6,6 +6,6 @@ export default function AdminRoute({ children }) {
   const { isAdmin, loading } = useAuth()
 
   if (loading) return <Loader page />
-  if (!isAdmin) return <Navigate to="/login" replace />
+  if (!isAdmin) return <Navigate to="/" replace />
   return children
 }

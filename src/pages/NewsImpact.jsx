@@ -38,15 +38,16 @@ export default function NewsImpact() {
   const expertsReady = experts?.key === viewKey
   const byKey = expertsReady ? experts.byKey : NO_EXPERTS
 
-  // ForexFactory events replace the estimated ones for the weeks it covers.
+  // ForexFactory events replace the estimated ones for the weeks it covers; days already past are left out.
   const events = useMemo(() => {
     const live = ff?.key === viewKey ? ff : { weeks: [], events: [] }
     const estimated = eventsForMonth(view.year, view.month).filter((e) => !isCovered(live.weeks, e.date))
     const rank = { high: 0, medium: 1 }
-    return [...live.events, ...estimated].sort(
-      (a, b) => a.date.localeCompare(b.date) || (a.when ?? 0) - (b.when ?? 0) || rank[a.impact] - rank[b.impact],
-    )
-  }, [view, viewKey, ff])
+    return [...live.events, ...estimated]
+      .filter((e) => e.date >= todayKey)
+      .sort((a, b) => a.date.localeCompare(b.date) || (a.when ?? 0) - (b.when ?? 0) || rank[a.impact] - rank[b.impact])
+  }, [view, viewKey, ff, todayKey])
+  const atCurrentMonth = view.year === today.getFullYear() && view.month === today.getMonth()
 
   const days = useMemo(() => {
     const byDate = {}
@@ -86,13 +87,18 @@ export default function NewsImpact() {
   return (
     <main className="container page-pad news-page">
       <header className="news-head">
-        <h1>{t('newsImpact')}</h1>
+        <h1>{t('news')}</h1>
         <p className="news-intro">{t('newsIntro')}</p>
       </header>
 
       <div className="news-controls">
         <div className="news-month">
-          <button className="btn btn-ghost btn-sm" onClick={() => shift(-1)} aria-label={t('prevMonth')}>
+          <button
+            className="btn btn-ghost btn-sm"
+            onClick={() => shift(-1)}
+            disabled={atCurrentMonth}
+            aria-label={t('prevMonth')}
+          >
             ←
           </button>
           <h2>{monthLabel}</h2>

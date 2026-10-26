@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, Navigate, useParams } from 'react-router-dom'
 import DOMPurify from 'dompurify'
 import { useLang } from '../context/LangContext'
 import { formatDate, getPost, pickVersion, reelOf } from '../lib/posts'
@@ -22,13 +22,7 @@ export default function PostPage() {
   }, [id])
 
   if (post === undefined) return <Loader page />
-  if (post === null)
-    return (
-      <main className="container page-pad center">
-        <p>{t('notFound')}</p>
-        <Link to="/">{t('back')}</Link>
-      </main>
-    )
+  if (post === null) return <Navigate to="/" replace />
 
   const v = pickVersion(post, lang)
 

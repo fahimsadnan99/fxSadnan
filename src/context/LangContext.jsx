@@ -10,12 +10,11 @@ const STRINGS = {
     ctaRead: 'ব্লগ পড়ুন',
     reels: 'রিলস',
     posts: 'পোস্ট',
-    reelsIntro: 'সব রিলস এক জায়গায় — উপরে বিষয় বেছে নিন, যেকোনোটায় ট্যাপ করে সাউন্ডসহ দেখুন।',
-    postsIntro: 'সব লেখা এক জায়গায় — উপরে বিষয় বেছে নিন।',
+    reelsIntro: 'সব রিলস এক জায়গায় — যেকোনোটায় ট্যাপ করে সাউন্ডসহ দেখুন।',
+    postsIntro: 'সব লেখা এক জায়গায়।',
     noReels: 'এখনো কোনো রিল নেই।',
     readPost: 'পুরো পোস্ট পড়ুন',
     close: 'বন্ধ করুন',
-    allTopics: 'সব বিষয়',
     noPosts: 'এখনো কোনো লেখা নেই।',
     loading: 'লোড হচ্ছে…',
     keyPoints: 'মূল বিষয়গুলো',
@@ -25,6 +24,11 @@ const STRINGS = {
     dashboard: 'ড্যাশবোর্ড',
     logout: 'লগআউট',
     admin: 'অ্যাডমিন',
+    adminOnly: 'ড্যাশবোর্ড শুধু অ্যাডমিনের জন্য। সিক্রেট কোড দিন।',
+    secretCode: 'সিক্রেট কোড',
+    enter: 'প্রবেশ',
+    cancel: 'বাতিল',
+    wrongCode: 'কোড ভুল।',
     fxRates: 'ফরেক্স রেট',
     daily: 'দৈনিক',
     sessions: 'মার্কেট সেশন',
@@ -36,8 +40,7 @@ const STRINGS = {
     closed: 'বন্ধ',
     weekend: 'উইকেন্ড — মার্কেট বন্ধ, সোমবার আবার খুলবে',
     news: 'নিউজ',
-    newsImpact: 'নিউজ ইমপ্যাক্ট',
-    newsIntro: 'প্রতি মাসের কোন তারিখে কোন বড় নিউজ আছে, আর সেটা মার্কেটে কী প্রভাব ফেলতে পারে।',
+    newsIntro: 'আজ থেকে সামনের কোন তারিখে কোন বড় নিউজ আছে, আর সেটা মার্কেটে কী প্রভাব ফেলতে পারে।',
     prevMonth: 'আগের মাস',
     nextMonth: 'পরের মাস',
     impact: 'প্রভাব',
@@ -47,7 +50,7 @@ const STRINGS = {
     today: 'আজ',
     approxDate: 'আনুমানিক তারিখ',
     affectedPairs: 'যে পেয়ারগুলোতে প্রভাব পড়ে',
-    noNews: 'এই মাসে কোনো নিউজ পাওয়া যায়নি।',
+    noNews: 'এই মাসে আর কোনো আসন্ন নিউজ নেই।',
     noFixedDates: 'এই বছরের সেন্ট্রাল ব্যাংক মিটিংয়ের তারিখ এখনো যোগ করা হয়নি — শুধু মাসিক ডেটা রিলিজ দেখানো হচ্ছে।',
     pair_up: 'উপরে যেতে পারে',
     pair_down: 'নিচে নামতে পারে',
@@ -84,12 +87,11 @@ const STRINGS = {
     ctaRead: 'Read the blog',
     reels: 'Reels',
     posts: 'Posts',
-    reelsIntro: 'Every reel in one place — pick a topic above, tap one to watch it with sound.',
-    postsIntro: 'Every post in one place — pick a topic above.',
+    reelsIntro: 'Every reel in one place — tap one to watch it with sound.',
+    postsIntro: 'Every post in one place.',
     noReels: 'No reels yet.',
     readPost: 'Read the full post',
     close: 'Close',
-    allTopics: 'All topics',
     noPosts: 'No posts yet.',
     loading: 'Loading…',
     keyPoints: 'Key points',
@@ -99,6 +101,11 @@ const STRINGS = {
     dashboard: 'Dashboard',
     logout: 'Log out',
     admin: 'Admin',
+    adminOnly: 'The dashboard is for the admin only. Enter the secret code.',
+    secretCode: 'Secret code',
+    enter: 'Enter',
+    cancel: 'Cancel',
+    wrongCode: 'Wrong code.',
     fxRates: 'FX rates',
     daily: 'daily',
     sessions: 'Market sessions',
@@ -110,8 +117,7 @@ const STRINGS = {
     closed: 'Closed',
     weekend: 'Weekend — market closed, reopens Monday',
     news: 'News',
-    newsImpact: 'News Impact',
-    newsIntro: 'Which big news lands on which date each month, and how it can move the market.',
+    newsIntro: 'Which big news is coming up from today on, and how it can move the market.',
     prevMonth: 'Previous month',
     nextMonth: 'Next month',
     impact: 'Impact',
@@ -121,7 +127,7 @@ const STRINGS = {
     today: 'Today',
     approxDate: 'Approx. date',
     affectedPairs: 'Pairs affected',
-    noNews: 'No news found for this month.',
+    noNews: 'No upcoming news left this month.',
     noFixedDates: "This year's central-bank meeting dates haven't been added yet — only monthly data releases are shown.",
     pair_up: 'may rise',
     pair_down: 'may fall',
@@ -153,11 +159,15 @@ const STRINGS = {
 
 const LangContext = createContext(null)
 
+// English is the default; Bangla only when the visitor picked it with the toggle.
+// The key was 'lang' before, which held an auto-saved 'bn' for every past visitor.
+const LANG_KEY = 'siteLang'
+
 function readSavedLang() {
   try {
-    return localStorage.getItem('lang') === 'en' ? 'en' : 'bn'
+    return localStorage.getItem(LANG_KEY) === 'bn' ? 'bn' : 'en'
   } catch {
-    return 'bn'
+    return 'en'
   }
 }
 
@@ -167,7 +177,7 @@ export function LangProvider({ children }) {
   useEffect(() => {
     document.documentElement.lang = lang
     try {
-      localStorage.setItem('lang', lang)
+      localStorage.setItem(LANG_KEY, lang)
     } catch {
       // Storage unavailable (private mode); the toggle still works for this visit.
     }

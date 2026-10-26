@@ -1,0 +1,320 @@
+//@version=6
+// FxSadnan – RRS / SSR setup finder
+//
+// RRS (BUY):  uptrend → pullback with LOWER HIGHS (R1 = upper, R2 = lower) → the pullback ends in
+//             one last RED candle = Order Block → from the OB price breaks BOTH R in one move →
+//             peak (= TP) → price comes back to the OB = Support zone → BUY. SL 25 pips below the OB.
+// SSR (SELL): the exact mirror (higher lows, last GREEN candle, Resistance zone, SELL, SL above).
+//
+// Confirmation at the zone (from the "Perfect SSR & RRS Entry" post):
+//   reaction first (absorption: rejection wick / negative delta while price holds),
+//   then the trigger (aggression: candle closes beyond the previous candle, delta flips).
+// TradingView has no footprint, so delta comes from lower-timeframe volume (works best on futures
+// such as GC; spot forex only has tick volume).
+//
+// Educational only, not financial advice.
+
+indicator("FxSadnan RRS / SSR", "RRS/SSR", overlay = true, max_boxes_count = 200, max_lines_count = 400, max_labels_count = 300)
+
+// ───────────────────────── Inputs
+grpS = "Setup"
+pivLen      = input.int(3, "Swing strength (bars each side)", minval = 1, group = grpS)
+maxPull     = input.int(60, "Max bars from R2 to the breakout", minval = 5, group = grpS)
+maxImpulse  = input.int(12, "Max bars from OB to breaking both R (one move)", minval = 2, group = grpS)
+obNearPct   = input.float(35, "OB must sit in the bottom % of the pullback", minval = 0, maxval = 100, group = grpS)
+maxWait     = input.int(150, "Max bars to wait for the return to the zone", minval = 5, group = grpS)
+confirmBars = input.int(8, "Bars to wait for confirmation after the touch", minval = 1, group = grpS)
+
+grpR = "Risk"
+pipIn    = input.float(0, "Pip size (0 = auto)", minval = 0, step = 0.0001, group = grpR, tooltip = "Auto: EURUSD 0.0001, USDJPY 0.01, XAUUSD 0.1")
+slPips   = input.float(25, "SL pips beyond the OB", minval = 0, group = grpR)
+proxPips = input.float(10, "Alert when price is this many pips from the zone", minval = 0, group = grpR)
+invPips  = input.float(5, "Setup fails if a candle closes this far through the zone (pips)", minval = 0, group = grpR)
+minRR    = input.float(1.5, "Min reward : risk", minval = 0, step = 0.1, group = grpR)
+
+grpT = "Trend & confirmation"
+useTrend   = input.bool(true, "Only RRS in an uptrend / SSR in a downtrend", group = grpT)
+emaFastLen = input.int(50, "Fast EMA", minval = 1, group = grpT)
+emaSlowLen = input.int(200, "Slow EMA", minval = 1, group = grpT)
+htfIn      = input.timeframe("", "Higher timeframe (empty = auto)", group = grpT, tooltip = "Auto follows the Entry post: 5m→1H, 15m→4H, 1H→1D, 4H→1W")
+useDelta   = input.bool(true, "Use lower-timeframe volume delta", group = grpT)
+ltfIn      = input.timeframe("1", "Delta timeframe", group = grpT)
+takeScore  = input.int(5, "Score needed for TAKE (out of 6)", minval = 1, maxval = 6, group = grpT)
+
+grpV = "Display"
+showBuy   = input.bool(true, "Show RRS (buy)", group = grpV)
+showSell  = input.bool(true, "Show SSR (sell)", group = grpV)
+showEma   = input.bool(true, "Show EMAs", group = grpV)
+showPanel = input.bool(true, "Show status panel", group = grpV)
+colBuy    = input.color(#22c55e, "Buy colour", group = grpV)
+colSell   = input.color(#ef4444, "Sell colour", group = grpV)
+colR      = input.color(#f59e0b, "R / S line colour", group = grpV)
+
+// ───────────────────────── Helpers
+pip = pipIn > 0 ? pipIn : syminfo.mintick >= 0.1 ? syminfo.mintick : syminfo.mintick * 10
+f(float v) => str.tostring(v, format.mintick)
+mark(bool ok) => ok ? "✔" : "✘"
+
+emaFast = ta.ema(close, emaFastLen)
+emaSlow = ta.ema(close, emaSlowLen)
+plot(showEma ? emaFast : na, "Fast EMA", color.new(color.gray, 40))
+plot(showEma ? emaSlow : na, "Slow EMA", color.new(color.gray, 0), 2)
+
+// Higher timeframe bias, taken from the last CLOSED higher-timeframe bar (no repainting).
+tfSec   = timeframe.in_seconds()
+autoHtf = tfSec <= 300 ? "60" : tfSec <= 900 ? "240" : tfSec <= 3600 ? "D" : tfSec <= 14400 ? "W" : "M"
+htf     = htfIn == "" ? autoHtf : htfIn
+htfBias() => close > ta.ema(close, emaFastLen) ? 1 : -1
+htfDir = request.security(syminfo.tickerid, htf, htfBias()[1], lookahead = barmerge.lookahead_on)
+
+// Delta of the chart candle = up-volume minus down-volume of its lower-timeframe candles.
+barDelta() => close > open ? volume : close < open ? -volume : 0.0
+ltfArr = request.security_lower_tf(syminfo.tickerid, ltfIn, barDelta())
+float delta = na
+if useDelta and volume > 0 and ltfArr.size() > 0
+    delta := ltfArr.sum()
+
+// ───────────────────────── One engine for both sides
+// The SELL side runs on mirrored prices (high → -low, open → -open …), so an SSR is literally an
+// RRS upside down. `d` = +1 for RRS, -1 for SSR; real price = d * mirrored price.
+type Side
+    int    d
+    int    state = 0     // 0 scan · 1 pullback · 2 broke R2 · 3 armed, waiting return · 4 in zone
+    int    ev = 0        // event this bar: 1 armed · 2 near · 3 touch · 4 signal · 5 failed · 6 expired
+    float  lastPiv
+    int    lastPivBar
+    float  rU
+    int    rUbar
+    float  rL
+    int    rLbar
+    float  lowest
+    int    obBar
+    float  obH
+    float  obL
+    float  lastRedH
+    float  lastRedL
+    int    lastRedBar
+    float  zTop
+    float  zBot
+    float  sl
+    float  peak
+    int    armBar
+    int    touchBar
+    bool   nearSent = false
+    bool   absorbed = false
+    int    score = 0
+    float  rr
+    float  entry
+    string checks = ""
+    box    zone
+    line   slLine
+    line   tpLine
+
+method step(Side s, float H, float L, float O, float C, float pH, float pO, float pC, float piv, float lowN, float E, float Ef, float dlt) =>
+    s.ev := 0
+
+    // 1) a new swing high: two lower highs in a row = R1 (upper) and R2 (lower)
+    if not na(piv)
+        pivBar = bar_index - pivLen
+        if s.state <= 2
+            if not na(s.lastPiv) and piv < s.lastPiv
+                s.rU := s.lastPiv
+                s.rUbar := s.lastPivBar
+                s.rL := piv
+                s.rLbar := pivBar
+                s.lowest := lowN
+                s.obBar := s.lastRedBar
+                s.obH := s.lastRedH
+                s.obL := s.lastRedL
+                s.state := 1
+            else
+                s.state := 0
+        s.lastPiv := piv
+        s.lastPivBar := pivBar
+
+    // 2) pullback: follow the bottom, the last red candle there is the Order Block
+    if s.state == 1
+        if C > s.rL
+            s.state := 2
+        else
+            if L < s.lowest
+                s.lowest := L
+                if C < O
+                    s.obBar := bar_index
+                    s.obH := H
+                    s.obL := L
+                else
+                    s.obBar := s.lastRedBar
+                    s.obH := s.lastRedH
+                    s.obL := s.lastRedL
+            else if C < O and L <= s.lowest + (s.rL - s.lowest) * obNearPct / 100
+                s.obBar := bar_index
+                s.obH := H
+                s.obL := L
+            if bar_index - s.rLbar > maxPull
+                s.state := 0
+
+    // 3) one move from the OB through both R levels
+    if s.state == 2
+        if na(s.obBar) or C < s.obL or bar_index - s.obBar > maxImpulse
+            s.state := 0
+        else if C > s.rU
+            if not useTrend or (C > E and Ef > E)
+                s.state := 3
+                s.ev := 1
+                s.armBar := bar_index
+                s.peak := H
+                s.zTop := s.obH
+                s.zBot := s.obL
+                s.sl := s.obL - slPips * pip
+                s.nearSent := false
+                s.absorbed := false
+            else
+                s.state := 0
+
+    // 4) armed: wait for price to come back to the OB zone
+    if s.state == 3 and s.ev != 1
+        if L > s.zTop
+            s.peak := math.max(s.peak, H)
+            if not s.nearSent and L <= s.zTop + proxPips * pip
+                s.nearSent := true
+                s.ev := 2
+            if bar_index - s.armBar > maxWait
+                s.state := 0
+                s.ev := 6
+        else
+            s.state := 4
+            s.touchBar := bar_index
+            s.ev := 3
+
+    // 5) in the zone: absorption first, then aggression
+    if s.state == 4
+        rng = H - L
+        lowerWick = math.min(O, C) - L
+        if L <= s.zTop and C >= s.zBot and ((rng > 0 and lowerWick >= rng * 0.4) or (not na(dlt) and dlt < 0))
+            s.absorbed := true
+        if C < s.zBot - invPips * pip
+            s.state := 0
+            s.ev := 5
+        else if C > O and C > pH
+            rr = C < s.peak and C > s.sl ? (s.peak - C) / (C - s.sl) : 0.0
+            c1 = C > E and Ef > E
+            c2 = htfDir == s.d
+            c3 = s.absorbed
+            c4 = na(dlt) ? rng > 0 and (C - O) >= rng * 0.6 : dlt > 0
+            c5 = rr >= minRR
+            c6 = (pC < pO and C >= pO and O <= pC) or (rng > 0 and (C - L) / rng >= 0.75)
+            s.score := (c1 ? 1 : 0) + (c2 ? 1 : 0) + (c3 ? 1 : 0) + (c4 ? 1 : 0) + (c5 ? 1 : 0) + (c6 ? 1 : 0)
+            s.rr := rr
+            s.entry := C
+            s.checks := mark(c1) + " Trend (EMA " + str.tostring(emaFastLen) + " / " + str.tostring(emaSlowLen) + ")\n" +
+                 mark(c2) + " Higher TF (" + htf + ") agrees\n" +
+                 mark(c3) + " Absorption at the zone (wick / delta held)\n" +
+                 mark(c4) + (na(dlt) ? " Strong body (no volume data)\n" : " Delta flipped\n") +
+                 mark(c5) + " RR " + str.tostring(rr, "#.##") + " ≥ " + str.tostring(minRR) + "\n" +
+                 mark(c6) + " Engulfing / strong close"
+            s.state := 0
+            s.ev := 4
+        else if bar_index - s.touchBar >= confirmBars
+            s.state := 0
+            s.ev := 6
+    s.ev
+
+// Remember the last red candle of this side (green for SSR) for the next bar's OB search.
+method trackRed(Side s, float H, float L, float O, float C) =>
+    if C < O
+        s.lastRedBar := bar_index
+        s.lastRedH := H
+        s.lastRedL := L
+
+// ───────────────────────── Run both sides
+var Side buy  = Side.new(1)
+var Side sell = Side.new(-1)
+
+pivB = ta.pivothigh(high, pivLen, pivLen)
+pivS = ta.pivotlow(low, pivLen, pivLen)
+lowB = ta.lowest(low, pivLen)
+lowS = -ta.highest(high, pivLen)
+
+evB = buy.step(high, low, open, close, high[1], open[1], close[1], pivB, lowB, emaSlow, emaFast, delta)
+evS = sell.step(-low, -high, -open, -close, -low[1], -open[1], -close[1], -pivS, lowS, -emaSlow, -emaFast, na(delta) ? na : -delta)
+buy.trackRed(high, low, open, close)
+sell.trackRed(-low, -high, -open, -close)
+
+// ───────────────────────── Drawing + alerts
+verdict(int score) => score >= takeScore ? "TAKE ✅" : score == takeScore - 1 ? "RISKY ⚠" : "SKIP ❌"
+
+method render(Side s, int ev, bool show) =>
+    d    = s.d
+    col  = d == 1 ? colBuy : colSell
+    name = d == 1 ? "RRS BUY" : "SSR SELL"
+    head = syminfo.ticker + " " + timeframe.period + " · " + name + ": "
+    if show
+        if ev == 1
+            top = math.max(d * s.zTop, d * s.zBot)
+            bot = math.min(d * s.zTop, d * s.zBot)
+            s.zone := box.new(s.obBar, top, bar_index + 3, bot, col, 1, bgcolor = color.new(col, 82), text = d == 1 ? "Support (OB)" : "Resistance (OB)", text_color = col, text_size = size.small, text_halign = text.align_left)
+            line.new(s.rUbar, d * s.rU, bar_index, d * s.rU, color = colR, style = line.style_dashed)
+            line.new(s.rLbar, d * s.rL, bar_index, d * s.rL, color = colR, style = line.style_dashed)
+            label.new(s.rUbar, d * s.rU, d == 1 ? "R1" : "S1", color = color.new(colR, 100), textcolor = colR, style = d == 1 ? label.style_label_down : label.style_label_up, size = size.small)
+            label.new(s.rLbar, d * s.rL, d == 1 ? "R2" : "S2", color = color.new(colR, 100), textcolor = colR, style = d == 1 ? label.style_label_down : label.style_label_up, size = size.small)
+            s.slLine := line.new(s.obBar, d * s.sl, bar_index + 3, d * s.sl, color = color.red, style = line.style_dotted)
+            s.tpLine := line.new(bar_index, d * s.peak, bar_index + 3, d * s.peak, color = color.teal, style = line.style_dotted)
+            label.new(bar_index, d * s.peak, name + " ready · wait for the return", color = color.new(col, 85), textcolor = col, style = d == 1 ? label.style_label_down : label.style_label_up, size = size.small)
+            alert(head + "setup formed. Zone " + f(bot) + " – " + f(top) + ", SL " + f(d * s.sl) + ". Wait for price to return.", alert.freq_once_per_bar_close)
+
+        // keep the zone, SL and TP stretched to the current bar while the setup is alive
+        if (s.state == 3 or s.state == 4 or ev >= 4) and not na(s.zone)
+            s.zone.set_right(bar_index + 3)
+            s.slLine.set_x2(bar_index + 3)
+            s.tpLine.set_y1(d * s.peak)
+            s.tpLine.set_y2(d * s.peak)
+            s.tpLine.set_x2(bar_index + 3)
+
+        if ev == 2
+            alert(head + "price is " + str.tostring(proxPips) + " pips from the zone. Get ready.", alert.freq_once_per_bar)
+        if ev == 3
+            alert(head + "price is IN the zone. Watch for absorption, then the confirmation candle.", alert.freq_once_per_bar)
+        if ev == 4
+            v   = verdict(s.score)
+            txt = (d == 1 ? "BUY " : "SELL ") + v + " " + str.tostring(s.score) + "/6\nSL " + f(d * s.sl) + "  TP " + f(d * s.peak) + "\nRR " + str.tostring(s.rr, "#.##")
+            label.new(bar_index, d == 1 ? low : high, txt, color = s.score >= takeScore ? col : color.new(color.gray, 20), textcolor = color.white, style = d == 1 ? label.style_label_up : label.style_label_down, size = size.normal, tooltip = s.checks)
+            alert(head + "CONFIRMATION → " + (d == 1 ? "BUY " : "SELL ") + v + " (" + str.tostring(s.score) + "/6). Entry " + f(d * s.entry) + ", SL " + f(d * s.sl) + ", TP " + f(d * s.peak) + ", RR " + str.tostring(s.rr, "#.##") + "\n" + s.checks, alert.freq_once_per_bar_close)
+        if ev == 5
+            label.new(bar_index, d == 1 ? low : high, "✖ zone broken, skip", color = color.new(color.gray, 30), textcolor = color.white, style = d == 1 ? label.style_label_up : label.style_label_down, size = size.small)
+            alert(head + "zone broken (closed through it). Skip this setup.", alert.freq_once_per_bar_close)
+        if ev == 5 or ev == 6
+            s.zone := na
+
+buy.render(evB, showBuy)
+sell.render(evS, showSell)
+
+// Simple alert conditions (for users who prefer them over "Any alert() function call")
+alertcondition(showBuy and evB == 4 and buy.score >= takeScore, "RRS BUY – TAKE", "{{ticker}} {{interval}}: RRS BUY confirmed (TAKE)")
+alertcondition(showSell and evS == 4 and sell.score >= takeScore, "SSR SELL – TAKE", "{{ticker}} {{interval}}: SSR SELL confirmed (TAKE)")
+alertcondition((showBuy and (evB == 2 or evB == 3)) or (showSell and (evS == 2 or evS == 3)), "Price near / in zone", "{{ticker}} {{interval}}: price reached an RRS/SSR zone")
+alertcondition((showBuy and evB == 1) or (showSell and evS == 1), "New setup formed", "{{ticker}} {{interval}}: new RRS/SSR setup")
+
+// ───────────────────────── Status panel
+stateText(int st) =>
+    switch st
+        1 => "Pullback (lower highs)"
+        2 => "Broke 1st level…"
+        3 => "Armed · wait for return"
+        4 => "In zone · wait confirm"
+        => "Scanning"
+
+var table panel = table.new(position.top_right, 3, 4, bgcolor = color.new(#0b1220, 10), border_color = color.new(color.gray, 70), border_width = 1)
+if showPanel and barstate.islast
+    panel.cell(0, 0, "FxSadnan", text_color = color.white, text_size = size.small)
+    panel.cell(1, 0, "State", text_color = color.gray, text_size = size.small)
+    panel.cell(2, 0, "Zone / SL", text_color = color.gray, text_size = size.small)
+    panel.cell(0, 1, "RRS", text_color = colBuy, text_size = size.small)
+    panel.cell(1, 1, stateText(buy.state), text_color = color.white, text_size = size.small)
+    panel.cell(2, 1, buy.state >= 3 ? f(buy.zBot) + "–" + f(buy.zTop) + " / " + f(buy.sl) : "–", text_color = color.white, text_size = size.small)
+    panel.cell(0, 2, "SSR", text_color = colSell, text_size = size.small)
+    panel.cell(1, 2, stateText(sell.state), text_color = color.white, text_size = size.small)
+    panel.cell(2, 2, sell.state >= 3 ? f(-sell.zTop) + "–" + f(-sell.zBot) + " / " + f(-sell.sl) : "–", text_color = color.white, text_size = size.small)
+    panel.cell(0, 3, "HTF " + htf, text_color = color.gray, text_size = size.small)
+    panel.cell(1, 3, htfDir == 1 ? "Bullish" : "Bearish", text_color = htfDir == 1 ? colBuy : colSell, text_size = size.small)
+    panel.cell(2, 3, "Pip " + str.tostring(pip), text_color = color.gray, text_size = size.small)

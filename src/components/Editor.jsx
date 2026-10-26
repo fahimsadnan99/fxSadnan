@@ -56,7 +56,7 @@ export default function Editor({ content, onChange, placeholder }) {
     setError('')
     setUploading((n) => n + files.length)
 
-    const results = await Promise.allSettled(files.map((f) => uploadImage(f, { crop: true })))
+    const results = await Promise.allSettled(files.map((f) => uploadImage(f)))
     setUploading((n) => n - files.length)
 
     const nodes = results

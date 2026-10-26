@@ -90,15 +90,6 @@ export function pickVersion(post, lang) {
 // older posts that never got an English reel.
 export const reelOf = (post) => post.en?.reelUrl || post.bn?.reelUrl || ''
 
-// The distinct topics among `posts` (in `lang`), and the posts matching `topic` ('' = all).
-export function topicsOf(posts, lang, topic) {
-  const topicOf = (post) => pickVersion(post, lang).topic
-  return {
-    topics: [...new Set(posts.map(topicOf).filter(Boolean))],
-    visible: topic ? posts.filter((post) => topicOf(post) === topic) : posts,
-  }
-}
-
 export function formatDate(timestamp, lang) {
   if (!timestamp?.toDate) return ''
   return timestamp.toDate().toLocaleDateString(lang === 'bn' ? 'bn-BD' : 'en-US', {
