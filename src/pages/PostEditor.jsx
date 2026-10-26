@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import Editor from '../components/Editor'
 import { createPost, emptyVersion, getPost, LANGS, updatePost } from '../lib/posts'
 import { uploadImage, uploadVideo } from '../lib/upload'
+import { coverVideoSrc } from '../lib/video'
 import ReelPlayer from '../components/ReelPlayer'
 import Loader from '../components/Loader'
 
@@ -87,12 +88,12 @@ export default function PostEditor() {
 
   useEffect(() => {
     if (!id) {
-      setForm({ coverUrl: '', published: false, bn: toForm(), en: toForm() })
+      setForm({ coverUrl: '', coverVideoUrl: '', published: false, bn: toForm(), en: toForm() })
       return
     }
     getPost(id).then((post) => {
       if (!post) return setMessage('Post pawa jayni.')
-      setForm({ coverUrl: post.coverUrl || '', published: !!post.published, bn: toForm(post.bn), en: toForm(post.en) })
+      setForm({ coverUrl: post.coverUrl || '', coverVideoUrl: post.coverVideoUrl || '', published: !!post.published, bn: toForm(post.bn), en: toForm(post.en) })
     }).catch((e) => setMessage(e.message))
   }, [id])
 
@@ -106,7 +107,8 @@ export default function PostEditor() {
     setMessage('')
     try {
       const url = await uploadImage(file)
-      setForm((f) => ({ ...f, coverUrl: url }))
+      // The animated cover was made from the old photo, so it goes too.
+      setForm((f) => ({ ...f, coverUrl: url, coverVideoUrl: '' }))
     } catch (e) {
       setMessage(e.message)
     } finally {
@@ -121,7 +123,7 @@ export default function PostEditor() {
     }
     setSaving(true)
     setMessage('')
-    const data = { coverUrl: form.coverUrl, published: form.published, bn: fromForm(form.bn), en: fromForm(form.en) }
+    const data = { coverUrl: form.coverUrl, coverVideoUrl: form.coverVideoUrl, published: form.published, bn: fromForm(form.bn), en: fromForm(form.en) }
     try {
       if (id) await updatePost(id, data)
       else await createPost(data)
@@ -158,16 +160,24 @@ export default function PostEditor() {
 
       <section className="panel cover-panel">
         <div className="cover-preview">
-          {form.coverUrl ? <img src={form.coverUrl} alt="" /> : <span className="muted">Cover photo nei</span>}
+          {form.coverVideoUrl ? (
+            <video src={coverVideoSrc(form.coverVideoUrl)} poster={form.coverUrl} muted loop autoPlay playsInline />
+          ) : form.coverUrl ? (
+            <img src={form.coverUrl} alt="" />
+          ) : (
+            <span className="muted">Cover photo nei</span>
+          )}
         </div>
         <div>
           <h3>Cover photo</h3>
-          <p className="muted small">Card ar post er upore ei chhobi dekhabe.</p>
+          <p className="muted small">
+            Card ar post er upore ei chhobi dekhabe.{form.coverVideoUrl && ' Animated cover ache; photo change korle seta bad jabe.'}
+          </p>
           <button className="btn btn-ghost" onClick={() => coverInput.current.click()} disabled={coverBusy}>
             {coverBusy ? 'Uploading…' : form.coverUrl ? 'Change' : 'Upload'}
           </button>
           {form.coverUrl && (
-            <button className="btn btn-ghost" onClick={() => setForm((f) => ({ ...f, coverUrl: '' }))}>
+            <button className="btn btn-ghost" onClick={() => setForm((f) => ({ ...f, coverUrl: '', coverVideoUrl: '' }))}>
               Remove
             </button>
           )}

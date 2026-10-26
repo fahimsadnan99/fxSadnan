@@ -3,7 +3,8 @@ import { Link, useParams } from 'react-router-dom'
 import DOMPurify from 'dompurify'
 import { useLang } from '../context/LangContext'
 import { formatDate, getPost, pickVersion, reelOf } from '../lib/posts'
-import { SIZES, srcSet, withResponsiveImages } from '../lib/images'
+import { SIZES, withResponsiveImages } from '../lib/images'
+import Cover from '../components/Cover'
 import ReelPlayer from '../components/ReelPlayer'
 import Loader from '../components/Loader'
 
@@ -52,13 +53,7 @@ export default function PostPage() {
 
         {post.coverUrl && (
           <div className="container wide">
-            <img
-              className="post-cover"
-              src={post.coverUrl}
-              srcSet={srcSet(post.coverUrl)}
-              sizes={SIZES.postCover}
-              alt=""
-            />
+            <Cover post={post} className="post-cover" sizes={SIZES.postCover} eager />
           </div>
         )}
 

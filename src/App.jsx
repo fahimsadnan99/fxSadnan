@@ -9,6 +9,8 @@ import Home from './pages/Home'
 import PostPage from './pages/PostPage'
 import Login from './pages/Login'
 import NewsImpact from './pages/NewsImpact'
+import Reels from './pages/Reels'
+import Posts from './pages/Posts'
 import { useLang } from './context/LangContext'
 
 // Admin pages (and the heavy editor) load only when an admin opens them.
@@ -25,6 +27,8 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/post/:id" element={<PostPage />} />
+          <Route path="/reels" element={<Reels />} />
+          <Route path="/posts" element={<Posts />} />
           <Route path="/news" element={<NewsImpact />} />
           <Route path="/login" element={<Login />} />
           <Route

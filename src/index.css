@@ -853,14 +853,16 @@ code {
   background: linear-gradient(180deg, transparent 55%, rgba(6, 10, 19, 0.55));
   pointer-events: none;
 }
-.card-img img {
+.card-img img,
+.card-img video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
   transition: transform 0.7s ease;
 }
-.card:hover .card-img img {
+.card:hover .card-img img,
+.card:hover .card-img video {
   transform: scale(1.06);
 }
 .card-img-empty {
@@ -1388,7 +1390,8 @@ textarea {
     width: 100%;
   }
 }
-.cover-preview img {
+.cover-preview img,
+.cover-preview video {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -2029,5 +2032,52 @@ textarea {
   .week-summary td {
     border: 0;
     padding: 3px 0;
+  }
+}
+
+/* ============ Reels & Posts pages: 2 per row on phones, 3 on tablets, 4 on PC ============ */
+.topic-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+@media (min-width: 640px) {
+  .topic-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+}
+@media (min-width: 1024px) {
+  .topic-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+.topic-grid .reel-card {
+  width: auto;
+}
+.topic-grid .card-body {
+  padding: 14px 16px 16px;
+  gap: 8px;
+}
+.topic-grid .card-title {
+  font-size: 1.05rem;
+}
+@media (max-width: 639px) {
+  .topic-grid .card-body {
+    padding: 10px 12px 12px;
+  }
+  .topic-grid .card-title {
+    font-size: 0.92rem;
+  }
+  .topic-grid .reel-card-title {
+    font-size: 0.82rem;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+  }
+  .topic-grid .reel-play {
+    width: 44px;
+    height: 44px;
   }
 }

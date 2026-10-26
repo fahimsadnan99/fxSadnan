@@ -5,8 +5,8 @@ import { pickVersion, reelOf } from '../lib/posts'
 import { reelPoster } from '../lib/video'
 import ReelPlayer from './ReelPlayer'
 
-// Instagram-style row of reels; tapping one opens it full-screen with sound.
-export default function ReelsRow({ posts }) {
+// Instagram-style row of reels (or a wrapping grid with `grid`); tapping one opens it full-screen with sound.
+export default function ReelsRow({ posts, title, grid = false }) {
   const { lang, t } = useLang()
   const [open, setOpen] = useState(null)
 
@@ -30,9 +30,9 @@ export default function ReelsRow({ posts }) {
   return (
     <section className="section">
       <h2 className="section-title">
-        <span>🎬 {t('reels')}</span>
+        <span>{title ?? `🎬 ${t('reels')}`}</span>
       </h2>
-      <div className="reels-row">
+      <div className={grid ? 'topic-grid' : 'reels-row'}>
         {reels.map(({ post, v, url }) => (
           <button key={post.id} className="reel-card" onClick={() => setOpen({ post, url })} lang={v.lang}>
             <img src={reelPoster(url)} alt="" loading="lazy" />

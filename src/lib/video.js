@@ -2,6 +2,9 @@
 // 720px wide is plenty for a phone-sized vertical player and keeps files small.
 export const reelSrc = (url) => url.replace('/video/upload/', '/video/upload/q_auto,w_720/')
 
+// Animated covers are silent 16:9 loops; q_auto alone keeps them light.
+export const coverVideoSrc = (url) => url.replace('/video/upload/', '/video/upload/q_auto/')
+
 // A frame from 1s in, as a JPEG, used as the poster before the video plays.
 export const reelPoster = (url) =>
   url.replace('/video/upload/', '/video/upload/so_1,w_540,q_auto/').replace(/\.\w+$/, '.jpg')

@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
 import { useLang } from '../context/LangContext'
 import { formatDate, pickVersion } from '../lib/posts'
-import { SIZES, srcSet } from '../lib/images'
+import { SIZES } from '../lib/images'
+import Cover from './Cover'
 
 // `featured` renders the large horizontal card used for the newest post on the home page.
 export default function PostCard({ post, featured = false }) {
@@ -12,13 +13,7 @@ export default function PostCard({ post, featured = false }) {
     <Link to={`/post/${post.id}`} className={featured ? 'card card-featured' : 'card'} lang={v.lang}>
       <div className="card-img">
         {post.coverUrl ? (
-          <img
-            src={post.coverUrl}
-            srcSet={srcSet(post.coverUrl)}
-            sizes={featured ? SIZES.featured : SIZES.card}
-            alt=""
-            loading={featured ? 'eager' : 'lazy'}
-          />
+          <Cover post={post} sizes={featured ? SIZES.featured : SIZES.card} eager={featured} />
         ) : (
           <div className="card-img-empty">Fx</div>
         )}

@@ -14,7 +14,7 @@ import { db } from '../firebase'
 
 // Post shape in Firestore:
 // {
-//   coverUrl, published, createdAt, updatedAt,
+//   coverUrl, coverVideoUrl (optional animated loop of the cover), published, createdAt, updatedAt,
 //   bn: { title, topic, keyPoints: [], content: '<html>' },
 //   en: { title, topic, keyPoints: [], content: '<html>' },
 // }
@@ -89,6 +89,15 @@ export function pickVersion(post, lang) {
 // Reels are English-only and shown for every language. bn.reelUrl is only a fallback for
 // older posts that never got an English reel.
 export const reelOf = (post) => post.en?.reelUrl || post.bn?.reelUrl || ''
+
+// The distinct topics among `posts` (in `lang`), and the posts matching `topic` ('' = all).
+export function topicsOf(posts, lang, topic) {
+  const topicOf = (post) => pickVersion(post, lang).topic
+  return {
+    topics: [...new Set(posts.map(topicOf).filter(Boolean))],
+    visible: topic ? posts.filter((post) => topicOf(post) === topic) : posts,
+  }
+}
 
 export function formatDate(timestamp, lang) {
   if (!timestamp?.toDate) return ''

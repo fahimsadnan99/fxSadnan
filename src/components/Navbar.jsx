@@ -17,6 +17,12 @@ export default function Navbar() {
           <Logo />
         </Link>
         <div className="nav-right">
+          <NavLink to="/reels" className="btn btn-ghost btn-sm nav-link">
+            {t('reels')}
+          </NavLink>
+          <NavLink to="/posts" className="btn btn-ghost btn-sm nav-link">
+            {t('posts')}
+          </NavLink>
           <NavLink to="/news" className="btn btn-ghost btn-sm nav-link">
             <span className="nav-label-full">{t('newsImpact')}</span>
             <span className="nav-label-short">{t('news')}</span>
