@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-27T22:15:19+00:00",
+ "updated": "2026-10-28T05:43:58+00:00",
  "weeks": [
   [
    "2026-10-25",
@@ -316,7 +316,7 @@
    "country": "USD",
    "impact": "Low",
    "title": "Crude Oil Inventories",
-   "forecast": "-0.1M",
+   "forecast": "0.1M",
    "previous": "-3.1M"
   },
   {
@@ -428,7 +428,7 @@
    "country": "USD",
    "impact": "Medium",
    "title": "Advance GDP Price Index q/q",
-   "forecast": "3.3%",
+   "forecast": "3.2%",
    "previous": "6.2%"
   },
   {
@@ -492,7 +492,7 @@
    "country": "USD",
    "impact": "Low",
    "title": "Natural Gas Storage",
-   "forecast": "",
+   "forecast": "75B",
    "previous": "77B"
   },
   {
@@ -652,7 +652,7 @@
    "country": "GBP",
    "impact": "Low",
    "title": "Nationwide HPI m/m",
-   "forecast": "-0.1%",
+   "forecast": "-0.2%",
    "previous": "-0.2%"
   },
   {
