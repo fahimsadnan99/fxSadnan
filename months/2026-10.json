@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-28T12:56:37+00:00",
+ "updated": "2026-10-29T18:29:33+00:00",
  "weeks": [
   [
    "2026-10-25",
@@ -409,6 +409,14 @@
   },
   {
    "date": "2026-10-29T05:33:00-04:00",
+   "country": "EUR",
+   "impact": "Low",
+   "title": "Italian 10-y Bond Auction",
+   "forecast": "",
+   "previous": "4.58|1.6"
+  },
+  {
+   "date": "2026-10-29T06:08:00-04:00",
    "country": "EUR",
    "impact": "Low",
    "title": "Italian 10-y Bond Auction",
