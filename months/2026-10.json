@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-29T18:29:33+00:00",
+ "updated": "2026-10-30T10:03:13+00:00",
  "weeks": [
   [
    "2026-10-25",
@@ -616,6 +616,30 @@
    "previous": ""
   },
   {
+   "date": "2026-10-29T23:02:00-04:00",
+   "country": "JPY",
+   "impact": "High",
+   "title": "BOJ Outlook Report",
+   "forecast": "",
+   "previous": ""
+  },
+  {
+   "date": "2026-10-29T23:02:00-04:00",
+   "country": "JPY",
+   "impact": "High",
+   "title": "BOJ Policy Rate",
+   "forecast": "<1.25%",
+   "previous": "<1.25%"
+  },
+  {
+   "date": "2026-10-29T23:02:00-04:00",
+   "country": "JPY",
+   "impact": "High",
+   "title": "Monetary Policy Statement",
+   "forecast": "",
+   "previous": ""
+  },
+  {
    "date": "2026-10-30T01:00:00-04:00",
    "country": "JPY",
    "impact": "Low",
@@ -654,6 +678,14 @@
    "title": "French Flash GDP q/q",
    "forecast": "0.1%",
    "previous": "0.2%"
+  },
+  {
+   "date": "2026-10-30T02:30:00-04:00",
+   "country": "JPY",
+   "impact": "High",
+   "title": "BOJ Press Conference",
+   "forecast": "",
+   "previous": ""
   },
   {
    "date": "2026-10-30T03:00:00-04:00",
