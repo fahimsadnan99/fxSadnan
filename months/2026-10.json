@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-30T10:03:13+00:00",
+ "updated": "2026-10-30T18:01:46+00:00",
  "weeks": [
   [
    "2026-10-25",
@@ -836,6 +836,14 @@
    "country": "USD",
    "impact": "Low",
    "title": "FOMC Member Musalem Speaks",
+   "forecast": "",
+   "previous": ""
+  },
+  {
+   "date": "2026-10-30T13:30:00-04:00",
+   "country": "USD",
+   "impact": "Low",
+   "title": "FOMC Member Logan Speaks",
    "forecast": "",
    "previous": ""
   },
