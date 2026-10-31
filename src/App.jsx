@@ -5,6 +5,7 @@ import Logo from './components/Logo'
 import Loader from './components/Loader'
 import Ticker from './components/Ticker'
 import AdminRoute from './components/AdminRoute'
+import ErrorBoundary from './components/ErrorBoundary'
 import Home from './pages/Home'
 import PostPage from './pages/PostPage'
 import NewsImpact from './pages/NewsImpact'
@@ -22,40 +23,42 @@ export default function App() {
     <>
       <Navbar />
       <Ticker />
-      <Suspense fallback={<Loader page />}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/post/:id" element={<PostPage />} />
-          <Route path="/reels" element={<Reels />} />
-          <Route path="/posts" element={<Posts />} />
-          <Route path="/news" element={<NewsImpact />} />
-          <Route
-            path="/admin"
-            element={
-              <AdminRoute>
-                <AdminDashboard />
-              </AdminRoute>
-            }
-          />
-          <Route
-            path="/admin/new"
-            element={
-              <AdminRoute>
-                <PostEditor />
-              </AdminRoute>
-            }
-          />
-          <Route
-            path="/admin/edit/:id"
-            element={
-              <AdminRoute>
-                <PostEditor />
-              </AdminRoute>
-            }
-          />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </Suspense>
+      <ErrorBoundary>
+        <Suspense fallback={<Loader page />}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/post/:id" element={<PostPage />} />
+            <Route path="/reels" element={<Reels />} />
+            <Route path="/posts" element={<Posts />} />
+            <Route path="/news" element={<NewsImpact />} />
+            <Route
+              path="/admin"
+              element={
+                <AdminRoute>
+                  <AdminDashboard />
+                </AdminRoute>
+              }
+            />
+            <Route
+              path="/admin/new"
+              element={
+                <AdminRoute>
+                  <PostEditor />
+                </AdminRoute>
+              }
+            />
+            <Route
+              path="/admin/edit/:id"
+              element={
+                <AdminRoute>
+                  <PostEditor />
+                </AdminRoute>
+              }
+            />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </Suspense>
+      </ErrorBoundary>
       <footer className="footer">
         <div className="container footer-inner">
           <Link to="/" className="brand" onClick={() => window.scrollTo(0, 0)}>
