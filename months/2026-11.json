@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-02T00:46:05+00:00",
+ "updated": "2026-11-02T11:11:29+00:00",
  "weeks": [
   [
    "2026-11-01",
@@ -81,6 +81,14 @@
   },
   {
    "date": "2026-11-02T02:30:00-05:00",
+   "country": "CHF",
+   "impact": "Low",
+   "title": "Retail Sales y/y",
+   "forecast": "3.0%",
+   "previous": "3.2%"
+  },
+  {
+   "date": "2026-11-02T02:33:00-05:00",
    "country": "CHF",
    "impact": "Low",
    "title": "Retail Sales y/y",
