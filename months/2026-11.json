@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-01T06:07:13+00:00",
+ "updated": "2026-11-02T00:46:05+00:00",
  "weeks": [
   [
    "2026-11-01",
@@ -172,7 +172,7 @@
    "country": "USD",
    "impact": "Medium",
    "title": "ISM Manufacturing PMI",
-   "forecast": "54.7",
+   "forecast": "54.5",
    "previous": "54.5"
   },
   {
@@ -180,7 +180,7 @@
    "country": "USD",
    "impact": "Low",
    "title": "Construction Spending m/m",
-   "forecast": "0.3%",
+   "forecast": "0.4%",
    "previous": "0.9%"
   },
   {
