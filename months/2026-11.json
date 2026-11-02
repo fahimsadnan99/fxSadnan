@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-02T11:11:29+00:00",
+ "updated": "2026-11-02T21:44:00+00:00",
  "weeks": [
   [
    "2026-11-01",
@@ -200,6 +200,14 @@
    "previous": "77.9"
   },
   {
+   "date": "2026-11-02T14:00:00-05:00",
+   "country": "USD",
+   "impact": "Low",
+   "title": "Loan Officer Survey",
+   "forecast": "",
+   "previous": ""
+  },
+  {
    "date": "2026-11-02T14:03:00-05:00",
    "country": "USD",
    "impact": "Low",
@@ -284,7 +292,7 @@
    "country": "USD",
    "impact": "Medium",
    "title": "JOLTS Job Openings",
-   "forecast": "7.11M",
+   "forecast": "7.15M",
    "previous": "7.08M"
   },
   {
@@ -308,7 +316,7 @@
    "country": "USD",
    "impact": "Low",
    "title": "Omdia Total Vehicle Sales",
-   "forecast": "15.9M",
+   "forecast": "15.8M",
    "previous": "16.0M"
   },
   {
@@ -404,7 +412,7 @@
    "country": "CNY",
    "impact": "Low",
    "title": "RatingDog Services PMI",
-   "forecast": "51.5",
+   "forecast": "51.7",
    "previous": "51.6"
   },
   {
@@ -412,7 +420,7 @@
    "country": "EUR",
    "impact": "Low",
    "title": "Spanish Unemployment Change",
-   "forecast": "25.3K",
+   "forecast": "18.7K",
    "previous": "23.6K"
   },
   {
@@ -420,7 +428,7 @@
    "country": "EUR",
    "impact": "Low",
    "title": "Spanish Services PMI",
-   "forecast": "57.5",
+   "forecast": "57.6",
    "previous": "58.3"
   },
   {
@@ -428,7 +436,7 @@
    "country": "EUR",
    "impact": "Low",
    "title": "Italian Services PMI",
-   "forecast": "51.0",
+   "forecast": "51.4",
    "previous": "51.7"
   },
   {
@@ -484,7 +492,7 @@
    "country": "USD",
    "impact": "Low",
    "title": "ADP Non-Farm Employment Change",
-   "forecast": "68K",
+   "forecast": "67K",
    "previous": "90K"
   },
   {
@@ -492,7 +500,7 @@
    "country": "CAD",
    "impact": "Low",
    "title": "Trade Balance",
-   "forecast": "3.8B",
+   "forecast": "4.8B",
    "previous": "4.2B"
   },
   {
@@ -516,7 +524,7 @@
    "country": "USD",
    "impact": "Medium",
    "title": "ISM Services PMI",
-   "forecast": "54.9",
+   "forecast": "54.8",
    "previous": "54.9"
   },
   {
@@ -540,7 +548,7 @@
    "country": "AUD",
    "impact": "Low",
    "title": "Goods Trade Balance",
-   "forecast": "0.96B",
+   "forecast": "0.94B",
    "previous": "0.50B"
   },
   {
@@ -564,7 +572,7 @@
    "country": "EUR",
    "impact": "Low",
    "title": "German Factory Orders m/m",
-   "forecast": "4.9%",
+   "forecast": "4.6%",
    "previous": "-10.6%"
   },
   {
@@ -572,7 +580,7 @@
    "country": "EUR",
    "impact": "Low",
    "title": "French Industrial Production m/m",
-   "forecast": "0.4%",
+   "forecast": "0.3%",
    "previous": "-0.3%"
   },
   {
@@ -588,7 +596,7 @@
    "country": "EUR",
    "impact": "Low",
    "title": "Italian Retail Sales m/m",
-   "forecast": "0.1%",
+   "forecast": "0.0%",
    "previous": "0.3%"
   },
   {
@@ -596,7 +604,7 @@
    "country": "GBP",
    "impact": "Low",
    "title": "Construction PMI",
-   "forecast": "46.5",
+   "forecast": "46.4",
    "previous": "46.1"
   },
   {
@@ -604,7 +612,7 @@
    "country": "EUR",
    "impact": "Low",
    "title": "PPI m/m",
-   "forecast": "2.6%",
+   "forecast": "2.5%",
    "previous": "1.9%"
   },
   {
@@ -772,7 +780,7 @@
    "country": "EUR",
    "impact": "Low",
    "title": "German Industrial Production m/m",
-   "forecast": "-0.2%",
+   "forecast": "0.0%",
    "previous": "2.0%"
   },
   {
@@ -844,7 +852,7 @@
    "country": "CAD",
    "impact": "High",
    "title": "Employment Change",
-   "forecast": "14.5K",
+   "forecast": "14.6K",
    "previous": "-68.3K"
   },
   {
@@ -868,7 +876,7 @@
    "country": "USD",
    "impact": "High",
    "title": "Non-Farm Employment Change",
-   "forecast": "63K",
+   "forecast": "65K",
    "previous": "29K"
   },
   {
@@ -900,7 +908,7 @@
    "country": "USD",
    "impact": "Medium",
    "title": "Prelim UoM Consumer Sentiment",
-   "forecast": "47.8",
+   "forecast": "48.1",
    "previous": "46.3"
   },
   {
@@ -932,7 +940,7 @@
    "country": "USD",
    "impact": "Low",
    "title": "Consumer Credit m/m",
-   "forecast": "12.0B",
+   "forecast": "13.4B",
    "previous": "8.3B"
   },
   {
