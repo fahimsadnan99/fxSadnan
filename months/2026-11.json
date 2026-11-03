@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-03T17:04:19+00:00",
+ "updated": "2026-11-03T23:24:44+00:00",
  "weeks": [
   [
    "2026-11-01",
@@ -369,6 +369,14 @@
   },
   {
    "date": "2026-11-03T12:00:00-05:00",
+   "country": "EUR",
+   "impact": "Low",
+   "title": "German Buba President Nagel Speaks",
+   "forecast": "",
+   "previous": ""
+  },
+  {
+   "date": "2026-11-03T13:00:00-05:00",
    "country": "EUR",
    "impact": "Low",
    "title": "German Buba President Nagel Speaks",
