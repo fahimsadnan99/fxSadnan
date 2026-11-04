@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-03T23:24:44+00:00",
+ "updated": "2026-11-04T06:24:31+00:00",
  "weeks": [
   [
    "2026-11-01",
@@ -564,7 +564,7 @@
    "country": "USD",
    "impact": "Low",
    "title": "Crude Oil Inventories",
-   "forecast": "-0.1M",
+   "forecast": "-1.7M",
    "previous": "-1.9M"
   },
   {
@@ -772,7 +772,7 @@
    "country": "USD",
    "impact": "Low",
    "title": "Natural Gas Storage",
-   "forecast": "",
+   "forecast": "81B",
    "previous": "80B"
   },
   {
