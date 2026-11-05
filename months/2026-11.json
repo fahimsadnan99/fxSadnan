@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-04T06:24:31+00:00",
+ "updated": "2026-11-05T17:25:13+00:00",
  "weeks": [
   [
    "2026-11-01",
@@ -638,6 +638,22 @@
    "title": "Construction PMI",
    "forecast": "46.4",
    "previous": "46.1"
+  },
+  {
+   "date": "2026-11-05T04:39:00-05:00",
+   "country": "EUR",
+   "impact": "Low",
+   "title": "Spanish 10-y Bond Auction",
+   "forecast": "",
+   "previous": "4.18|1.6"
+  },
+  {
+   "date": "2026-11-05T04:55:00-05:00",
+   "country": "EUR",
+   "impact": "Low",
+   "title": "French 10-y Bond Auction",
+   "forecast": "",
+   "previous": "4.93|2.0"
   },
   {
    "date": "2026-11-05T05:00:00-05:00",
