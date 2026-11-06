@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-05T17:25:13+00:00",
+ "updated": "2026-11-06T16:46:42+00:00",
  "weeks": [
   [
    "2026-11-01",
@@ -980,6 +980,14 @@
    "country": "USD",
    "impact": "Low",
    "title": "FOMC Member Bowman Speaks",
+   "forecast": "",
+   "previous": ""
+  },
+  {
+   "date": "2026-11-06T13:00:00-05:00",
+   "country": "USD",
+   "impact": "Low",
+   "title": "FOMC Member Daly Speaks",
    "forecast": "",
    "previous": ""
   },
