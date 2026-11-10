@@ -1,11 +1,36 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { deletePost, formatDate, listAllPosts, restorePost, trashPost, updatePost } from '../lib/posts'
 import Loader from '../components/Loader'
+import BinaryAdmin from './binary/BinaryAdmin'
 
 const titleOf = (post) => post.bn?.title || post.en?.title || '(no title)'
 
+// Dashboard with two sections, like the site: Forex (blog posts) and Binary (course lessons).
+// The open section is kept in the URL (?tab=binary) so returning from an editor lands on it.
 export default function AdminDashboard() {
+  const [params, setParams] = useSearchParams()
+  const section = params.get('tab') === 'binary' ? 'binary' : 'forex'
+
+  return (
+    <main className="container page-pad">
+      <div className="admin-head">
+        <h1>Dashboard</h1>
+        <nav className="market-toggle admin-section-toggle" aria-label="Section">
+          <button className={section === 'forex' ? 'active' : ''} onClick={() => setParams({}, { replace: true })}>
+            Forex posts
+          </button>
+          <button className={section === 'binary' ? 'active' : ''} onClick={() => setParams({ tab: 'binary' }, { replace: true })}>
+            Binary lessons
+          </button>
+        </nav>
+      </div>
+      {section === 'binary' ? <BinaryAdmin /> : <ForexPosts />}
+    </main>
+  )
+}
+
+function ForexPosts() {
   const [posts, setPosts] = useState(null)
   const [error, setError] = useState('')
   const [view, setView] = useState('posts')
@@ -61,14 +86,7 @@ export default function AdminDashboard() {
   const list = view === 'trash' ? trashed : active
 
   return (
-    <main className="container page-pad">
-      <div className="admin-head">
-        <h1>Dashboard</h1>
-        <Link to="/admin/new" className="btn btn-primary">
-          + Notun blog
-        </Link>
-      </div>
-
+    <>
       <div className="admin-tabs">
         <button className={view === 'posts' ? 'pill active' : 'pill'} onClick={() => setView('posts')}>
           Posts ({active.length})
@@ -81,6 +99,9 @@ export default function AdminDashboard() {
             Empty trash
           </button>
         )}
+        <Link to="/admin/new" className="btn btn-primary admin-new">
+          + Notun blog
+        </Link>
       </div>
 
       {view === 'trash' && (
@@ -140,6 +161,6 @@ export default function AdminDashboard() {
           </li>
         ))}
       </ul>
-    </main>
+    </>
   )
 }

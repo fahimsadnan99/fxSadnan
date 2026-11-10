@@ -41,7 +41,8 @@ function Btn({ on, active, title, children, disabled }) {
   )
 }
 
-export default function Editor({ content, onChange, placeholder }) {
+// `extensions`, `headingLevels` and `className` let the Binary lesson editor add its sketch blocks and lesson styles.
+export default function Editor({ content, onChange, placeholder, extensions = [], headingLevels = [2, 3], className = '' }) {
   const [uploading, setUploading] = useState(0)
   const [error, setError] = useState('')
   const fileInput = useRef(null)
@@ -73,9 +74,10 @@ export default function Editor({ content, onChange, placeholder }) {
 
   const editor = useEditor({
     extensions: [
-      StarterKit.configure({ heading: { levels: [2, 3] }, link: { openOnClick: false } }),
+      StarterKit.configure({ heading: { levels: headingLevels }, link: { openOnClick: false } }),
       BlogImage,
       Placeholder.configure({ placeholder }),
+      ...extensions,
     ],
     content,
     onUpdate: ({ editor }) => onChangeRef.current(editor.getHTML()),
@@ -109,7 +111,7 @@ export default function Editor({ content, onChange, placeholder }) {
       ordered: e.isActive('orderedList'),
       quote: e.isActive('blockquote'),
       link: e.isActive('link'),
-      image: e.isActive('image'),
+      image: e.isActive('image') || e.isActive('sketch'),
       canUndo: e.can().undo(),
       canRedo: e.can().redo(),
     }),
@@ -206,7 +208,7 @@ export default function Editor({ content, onChange, placeholder }) {
         </div>
       )}
 
-      <EditorContent editor={editor} className="prose editor-content" />
+      <EditorContent editor={editor} className={`prose editor-content ${className}`} />
     </div>
   )
 }

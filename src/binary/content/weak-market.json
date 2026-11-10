@@ -1,0 +1,11 @@
+{
+ "key": "weakMarket",
+ "bn": {
+  "title": "উইক বা দুর্বল মার্কেট",
+  "content": "<p>উইক মার্কেট বা দুর্বল মার্কেট নামটা থেকেই এর মানে বোঝা যায়।</p><p>উইক ক্যান্ডেল আমরা আগে জেনেছি: বায়ার ক্যান্ডেলে সেলার প্রেসার, অথবা সেলার ক্যান্ডেলে বায়ার প্রেসার বেশি থাকলে ক্যান্ডেলটি উইক বা দুর্বল।</p><img src=\"/binary/img/otc/WeakMarket/weakCandle.png\" alt=\"weak Candle img\"><p>৩টি বা তার বেশি উইক ক্যান্ডেল মিলে আমরা উইক মার্কেট ধরতে পারি। গ্রিন ক্যান্ডেলের মার্কেট দুর্বল হলে আমরা বায়ার সাইডকে উইক ধরব। একইভাবে কয়েকটি দুর্বল সেলার ক্যান্ডেল থাকলে সেলার মার্কেটকে উইক ধরব।</p><img src=\"/binary/img/otc/WeakMarket/weak2.png\" alt=\"weak Candle img\"><div data-sketch=\"weakMarket\"></div>"
+ },
+ "en": {
+  "title": "Weak Market",
+  "content": "<p>The meaning of a weak market is clear from its name.</p><p>We learned about weak candles earlier: if a buyer candle has more seller pressure, or a seller candle has more buyer pressure, the candle is weak.</p><img src=\"/binary/img/otc/WeakMarket/weakCandle.png\" alt=\"weak Candle img\"><p>When 3 or more weak candles come together, we can count it as a weak market. If a market of green candles is weak, we will count the buyer side as weak. In the same way, if there are several weak seller candles, we will count the seller market as weak.</p><img src=\"/binary/img/otc/WeakMarket/weak2.png\" alt=\"weak Candle img\"><div data-sketch=\"weakMarket\"></div>"
+ }
+}

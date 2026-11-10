@@ -1,0 +1,11 @@
+{
+ "key": "disOrderFlow",
+ "bn": {
+  "title": "ডিসঅর্ডারফ্লো",
+  "content": "<p>অর্ডারফ্লোতে আমরা দেখেছি, ক্যান্ডেল ক্রমান্বয়ে ছোট থেকে বড় বা বড় থেকে ছোট হয়। কিন্তু ডিসঅর্ডারফ্লোতে এই ক্রম থাকে না; অর্ডারগুলো, অর্থাৎ ক্যান্ডেলগুলো কখনো বড়, কখনো ছোট হয়।</p><p>ধরুন, ৩টি গ্রিন ক্যান্ডেল আছে। প্রথমটি ছোট, দ্বিতীয়টি তার চেয়ে বড়, কিন্তু শেষেরটি আবার ছোট। এখানে অর্ডারফ্লো বজায় থাকেনি, তাই আমরা একে ডিসঅর্ডারফ্লো বলি।</p><div data-sketch=\"disorderFlow\"></div><h5>নিচের চিত্রে ডিসঅর্ডারফ্লো দেখানো হলো।</h5><img src=\"/binary/img/otc/DisorderFlow/disorderFlw.png\" alt=\"Disorder Flow image\"><h6 class=\"bg-warning\">অর্ডারফ্লো ও ডিসঅর্ডারফ্লোর মধ্যে আমাদের জন্য অর্ডারফ্লোই গুরুত্বপূর্ণ, এটা আমাদের জন্য একটা প্লাস পয়েন্ট। ধীরে ধীরে আমরা শিখব কীভাবে অর্ডারফ্লো ব্যবহার করে ট্রেড করা যায়। এখন আমরা শুধু নাম আর দেখতে কেমন, তা জানছি; পরে এগুলো কীভাবে ও কোথায় ব্যবহার করব, তা দেখব।</h6>"
+ },
+ "en": {
+  "title": "Disorder Flow",
+  "content": "<p>In order flow we saw that candles grow progressively from small to large, or shrink from large to small. But in disorder flow there is no such sequence; the orders, that is, the candles, are sometimes large and sometimes small.</p><p>Suppose there are 3 green candles. The first is small, the second is larger than it, but the last one is small again. Here the order flow has not been maintained, so we call it disorder flow.</p><div data-sketch=\"disorderFlow\"></div><h5>The image below shows disorder flow.</h5><img src=\"/binary/img/otc/DisorderFlow/disorderFlw.png\" alt=\"Disorder Flow image\"><h6 class=\"bg-warning\">Between order flow and disorder flow, order flow is the one that matters to us, and it is a plus point for us. Step by step we will learn how to trade using order flow. For now we are only learning the names and what they look like; later we will see how and where to use them.</h6>"
+ }
+}

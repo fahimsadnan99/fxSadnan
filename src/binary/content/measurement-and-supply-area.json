@@ -1,0 +1,11 @@
+{
+ "key": "measurement&SupplyArea",
+ "bn": {
+  "title": "মেজারমেন্ট ও সাপ্লাই এরিয়া",
+  "content": "<p>সাপ্লাই বলতে আমরা বুঝি, বাজারে কোনো কিছু অনেক বেশি পরিমাণে থাকলে তার দাম কমে যায়। তখন মার্কেটে সেই জিনিসের দাম নিচের দিকে পড়তে থাকে, অর্থাৎ রেড ক্যান্ডেল হতে থাকে এবং দাম কমতে থাকে। দামের এই নিম্নমুখী প্রবাহই সাপ্লাই।</p><p>সাপ্লাই মেজারমেন্ট ঠিক ডিমান্ড মেজারমেন্টের মতো। মার্কেট ডাউনট্রেন্ডে থাকলে আমরা প্রথম ডাউনট্রেন্ডের A পয়েন্ট থেকে মেজারমেন্ট করে ধারণা পেতে পারি B পয়েন্ট পর্যন্ত কতটুকু সাপ্লাই আসবে। একইভাবে B পয়েন্ট থেকে C পয়েন্ট পর্যন্ত কতটুকু সাপ্লাই আসতে পারে, তারও একটা ধারণা পাওয়া যায়।</p><img src=\"/binary/img/otc/Supply/T1.jpg\" alt=\"Demand Area\"><div data-sketch=\"supplyMeasure\"></div>"
+ },
+ "en": {
+  "title": "Measurement & Supply Area",
+  "content": "<p>By supply we mean this: when there is a large quantity of something in the market, its price falls. The price of that item then keeps moving down in the market, meaning red candles keep forming and the price keeps dropping. This downward flow of price is supply.</p><p>Supply measurement works exactly like demand measurement. When the market is in a downtrend, we can measure from point A of the first downtrend to get an idea of how much supply will come down to point B. In the same way, we can also get an idea of how much supply may come from point B to point C.</p><img src=\"/binary/img/otc/Supply/T1.jpg\" alt=\"Demand Area\"><div data-sketch=\"supplyMeasure\"></div>"
+ }
+}

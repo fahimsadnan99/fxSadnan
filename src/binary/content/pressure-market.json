@@ -1,0 +1,11 @@
+{
+ "key": "pressureMarket",
+ "bn": {
+  "title": "চাপের মার্কেট",
+  "content": "<p>নরমাল ক্যান্ডেল বা স্ট্রং ক্যান্ডেলে আমরা দেখেছি, ক্যান্ডেলের দুই পাশে প্রায় সমান উইক থাকে।</p><p>কমপক্ষে তিনটি বা তার বেশি স্ট্রং ক্যান্ডেলের যোগফল মিলে আমরা স্ট্রং মার্কেট ধরি।</p><h5>প্রেসার মার্কেট কী এবং কীভাবে বুঝব?</h5><p>নাম থেকেই বোঝা যায়, প্রেসার মার্কেট মানে এমন মার্কেট, যেখানে প্রেসার আছে। বায়ারের প্রেসার ক্যান্ডেল হলো সেই গ্রিন ক্যান্ডেল, যার নিচের দিকের উইক বা শ্যাডো বড়। আর সেলারের প্রেসার ক্যান্ডেল হলো সেই রেড ক্যান্ডেল, যার উপরের দিকের উইক বা শ্যাডো বড়।</p><h5>নিচের চিত্রে বায়ার প্রেসার ক্যান্ডেল ও সেলার প্রেসার ক্যান্ডেল দেখানো হলো।</h5><img src=\"/binary/img/otc/PressureMarket/pressureCandle.png\" alt=\"pressure candle image\"><p class=\"bg-warning\">৩টি বা তার বেশি প্রেসার ক্যান্ডেল একসঙ্গে থাকলে, অর্থাৎ তাদের যোগফলই প্রেসার মার্কেট।</p><div data-sketch=\"pressureMarket\"></div><h5>নিচের চিত্রে বায়ার ও সেলার প্রেসার ক্যান্ডেল একসঙ্গে নিয়ে একটা প্রেসার মার্কেটের উদাহরণ দেখানো হলো।</h5><img src=\"/binary/img/otc/PressureMarket/pressure2.png\" alt=\"pressure candle image\">"
+ },
+ "en": {
+  "title": "Pressure Market",
+  "content": "<p>In normal candles or strong candles, we saw that the candle has roughly equal wicks on both sides.</p><p>We consider a strong market to be the sum of at least three or more strong candles.</p><h5>What is a pressure market and how do we recognise it?</h5><p>As the name suggests, a pressure market is a market where there is pressure. A buyer pressure candle is a green candle with a big wick or shadow on the lower side. And a seller pressure candle is a red candle with a big wick or shadow on the upper side.</p><h5>The image below shows a buyer pressure candle and a seller pressure candle.</h5><img src=\"/binary/img/otc/PressureMarket/pressureCandle.png\" alt=\"pressure candle image\"><p class=\"bg-warning\">When 3 or more pressure candles appear together, their sum is a pressure market.</p><div data-sketch=\"pressureMarket\"></div><h5>The image below shows an example of a pressure market, with buyer and seller pressure candles together.</h5><img src=\"/binary/img/otc/PressureMarket/pressure2.png\" alt=\"pressure candle image\">"
+ }
+}

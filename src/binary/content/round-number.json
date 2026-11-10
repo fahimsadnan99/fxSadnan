@@ -1,0 +1,11 @@
+{
+ "key": "roundNumber",
+ "bn": {
+  "title": "রাউন্ড নাম্বার",
+  "content": "<p>“রাউন্ড নাম্বার” (Round Number) বলতে এমন একটি সংখ্যা বোঝায়, যা সহজে মনে রাখা যায় বা হিসাবের জন্য সুবিধাজনক। সাধারণত এই সংখ্যাগুলো ০, ৫০, ১০০, ১০০০ ইত্যাদির মতো হয়।</p><h5>✅ রাউন্ড নাম্বারের সহজ উদাহরণ (সংখ্যার শেষে ০ থাকে)</h5><p>৫০ ✅</p><p>১০০ ✅</p><p>৫০০ ✅</p><p>১০০০ ✅</p><h5>❌ রাউন্ড নাম্বার নয়</h5><p>১৩</p><p>৮৭</p><p>১৪৩</p><p>৯৯৭</p><h5>ফ্যান্সি নাম্বার</h5><p>যে নাম্বারগুলো দেখতে আকর্ষণীয়।</p><p>যেমন: ১১১, ৯৯৯ ইত্যাদি।</p><h5>📌 কেন রাউন্ড নাম্বার ব্যবহার করি?</h5><p>মনে রাখা সহজ।</p><p>হিসাব করা সহজ।</p><p>আনুমানিক বলার জন্য সুবিধাজনক।</p><h5>রাউন্ড নাম্বার ব্যবহার করে আমরা কীভাবে ট্রেড করব?</h5><p>রাউন্ড নাম্বার সবসময় সাপোর্ট ও রেজিস্ট্যান্সের মতো কাজ করে। রেঞ্জিং মার্কেটে এবং আপট্রেন্ডে রাউন্ড নাম্বার রেজিস্ট্যান্সের মতো কাজ করে, আর ডাউনট্রেন্ডে রাউন্ড নাম্বার সাপোর্ট হিসেবে কাজ করে।</p><img src=\"/binary/img/PriceAction/RoundNumber/R1.jpg\" alt=\"Single Candle Stick\"><img src=\"/binary/img/PriceAction/RoundNumber/R2.jpg\" alt=\"Single Candle Stick\"><div data-sketch=\"roundNumber\"></div>"
+ },
+ "en": {
+  "title": "Round Number",
+  "content": "<p>A “round number” (Round Number) is a number that is easy to remember or convenient for calculation. These numbers are usually like 0, 50, 100, 1000 and so on.</p><h5>✅ Simple examples of round numbers (the number ends in 0)</h5><p>50 ✅</p><p>100 ✅</p><p>500 ✅</p><p>1000 ✅</p><h5>❌ Not round numbers</h5><p>13</p><p>87</p><p>143</p><p>997</p><h5>Fancy numbers</h5><p>Numbers that look attractive.</p><p>For example: 111, 999 and so on.</p><h5>📌 Why do we use round numbers?</h5><p>Easy to remember.</p><p>Easy to calculate.</p><p>Convenient for estimating.</p><h5>How will we trade using round numbers?</h5><p>Round numbers always act like support and resistance. In a ranging market and in an uptrend, a round number acts like resistance, and in a downtrend, a round number acts as support.</p><img src=\"/binary/img/PriceAction/RoundNumber/R1.jpg\" alt=\"Single Candle Stick\"><img src=\"/binary/img/PriceAction/RoundNumber/R2.jpg\" alt=\"Single Candle Stick\"><div data-sketch=\"roundNumber\"></div>"
+ }
+}

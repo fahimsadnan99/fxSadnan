@@ -1,0 +1,11 @@
+{
+ "key": "internalStructure",
+ "bn": {
+  "title": "ইন্টারনাল স্ট্রাকচার",
+  "content": "<p>ইন্টারনাল স্ট্রাকচার মানে ভেতরের স্ট্রাকচার।</p><p>আপট্রেন্ড বা ডাউনট্রেন্ড মার্কেটের কারেক্টিভ অংশে বিপরীত ট্রেন্ড দেখা যায়। যেমন, আপট্রেন্ড মার্কেটের কারেক্টিভ অংশে ডাউনট্রেন্ড দেখা যায়, আবার ডাউনট্রেন্ড মার্কেটের কারেক্টিভ অংশে আপট্রেন্ড দেখা যায়। এই বড় ট্রেন্ডের ভেতরের ছোট ট্রেন্ডকেই বলা হয় ইন্টারনাল স্ট্রাকচার।</p><div data-sketch=\"internalStructure\"></div><h5>*** আমরা এক্সটার্নাল স্ট্রাকচারকে সবচেয়ে বেশি প্রাধান্য দেব।</h5><img src=\"/binary/img/PriceAction/IS/T1.jpg\" alt=\"Single Candle Stick\"><img src=\"/binary/img/PriceAction/IS/T2.jpg\" alt=\"Single Candle Stick\"><img src=\"/binary/img/PriceAction/IS/T3.jpg\" alt=\"Single Candle Stick\">"
+ },
+ "en": {
+  "title": "Internal Structure",
+  "content": "<p>Internal structure means the structure inside.</p><p>In the corrective part of an uptrend or downtrend market, we see the opposite trend. For example, in the corrective part of an uptrend market we see a downtrend, and in the corrective part of a downtrend market we see an uptrend. This small trend inside the bigger trend is called internal structure.</p><div data-sketch=\"internalStructure\"></div><h5>*** We will give the highest priority to external structure.</h5><img src=\"/binary/img/PriceAction/IS/T1.jpg\" alt=\"Single Candle Stick\"><img src=\"/binary/img/PriceAction/IS/T2.jpg\" alt=\"Single Candle Stick\"><img src=\"/binary/img/PriceAction/IS/T3.jpg\" alt=\"Single Candle Stick\">"
+ }
+}

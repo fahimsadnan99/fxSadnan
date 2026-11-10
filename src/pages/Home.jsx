@@ -1,26 +1,11 @@
-import { useEffect, useState } from 'react'
-import PostCard from '../components/PostCard'
+import { Link } from 'react-router-dom'
 import Logo from '../components/Logo'
 import HeroChart from '../components/HeroChart'
 import MarketSessions from '../components/MarketSessions'
-import ReelsRow from '../components/ReelsRow'
-import Loader from '../components/Loader'
 import { useLang } from '../context/LangContext'
-import { listPublishedPosts } from '../lib/posts'
 
 export default function Home() {
   const { t } = useLang()
-  const [posts, setPosts] = useState(null)
-  const [error, setError] = useState('')
-
-  useEffect(() => {
-    listPublishedPosts()
-      .then(setPosts)
-      .catch((e) => setError(e.message))
-  }, [])
-
-  const [featured, ...rest] = posts ?? []
-
   return (
     <main className="container page-pad">
       <section className="masthead">
@@ -29,42 +14,32 @@ export default function Home() {
           <Logo size="xl" />
         </h1>
         <p className="masthead-tagline">{t('tagline')}</p>
-        <div className="hero-cta">
-          <a href="#posts" className="btn btn-primary btn-lg">
-            {t('ctaRead')} <span aria-hidden="true">→</span>
-          </a>
+        <h2 className="market-choice-title">{t('chooseMarket')}</h2>
+        <div className="market-choice">
+          <Link to="/forex" className="market-card market-forex">
+            <span className="market-card-mark" aria-hidden="true">
+              FX
+            </span>
+            <span className="market-card-name">{t('forex')}</span>
+            <span className="market-card-desc">{t('forexDesc')}</span>
+            <span className="read-more">
+              {t('ctaRead')} <span aria-hidden="true">→</span>
+            </span>
+          </Link>
+          <Link to="/binary" className="market-card market-binary">
+            <span className="market-card-mark" aria-hidden="true">
+              B
+            </span>
+            <span className="market-card-name">{t('binary')}</span>
+            <span className="market-card-desc">{t('binaryDesc')}</span>
+            <span className="read-more">
+              {t('explore')} <span aria-hidden="true">→</span>
+            </span>
+          </Link>
         </div>
         <MarketSessions />
         <div className="double-rule" />
       </section>
-
-      {error && <p className="error">{error}</p>}
-      {!posts && !error && <Loader />}
-      {posts && posts.length === 0 && <p className="muted center">{t('noPosts')}</p>}
-
-      <div id="posts" />
-      {posts && <ReelsRow posts={posts} />}
-      {featured && (
-        <section className="section">
-          <h2 className="section-title">
-            <span>{t('featured')}</span>
-          </h2>
-          <PostCard post={featured} featured />
-        </section>
-      )}
-
-      {rest.length > 0 && (
-        <section className="section">
-          <h2 className="section-title">
-            <span>{t('latest')}</span>
-          </h2>
-          <div className="grid">
-            {rest.map((post) => (
-              <PostCard key={post.id} post={post} />
-            ))}
-          </div>
-        </section>
-      )}
     </main>
   )
 }

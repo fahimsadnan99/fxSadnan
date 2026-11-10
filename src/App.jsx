@@ -7,6 +7,7 @@ import Ticker from './components/Ticker'
 import AdminRoute from './components/AdminRoute'
 import ErrorBoundary from './components/ErrorBoundary'
 import Home from './pages/Home'
+import ForexHome from './pages/ForexHome'
 import PostPage from './pages/PostPage'
 import NewsImpact from './pages/NewsImpact'
 import Reels from './pages/Reels'
@@ -16,6 +17,13 @@ import { useLang } from './context/LangContext'
 // Admin pages (and the heavy editor) load only when an admin opens them.
 const AdminDashboard = lazy(() => import('./pages/AdminDashboard'))
 const PostEditor = lazy(() => import('./pages/PostEditor'))
+// The Binary course section loads only when a visitor opens it.
+const BinaryHome = lazy(() => import('./pages/binary/BinaryHome'))
+const BinaryCourse = lazy(() => import('./pages/binary/CoursePage'))
+const BinaryLesson = lazy(() => import('./pages/binary/LessonPage'))
+const BinaryReels = lazy(() => import('./pages/binary/BinaryReels'))
+const BinaryPosts = lazy(() => import('./pages/binary/BinaryPosts'))
+const LessonEditor = lazy(() => import('./pages/binary/LessonEditor'))
 
 export default function App() {
   const { t } = useLang()
@@ -28,9 +36,17 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/post/:id" element={<PostPage />} />
-            <Route path="/reels" element={<Reels />} />
-            <Route path="/posts" element={<Posts />} />
+            <Route path="/forex" element={<ForexHome />} />
+            <Route path="/forex/reels" element={<Reels />} />
+            <Route path="/forex/posts" element={<Posts />} />
+            <Route path="/reels" element={<Navigate to="/forex/reels" replace />} />
+            <Route path="/posts" element={<Navigate to="/forex/posts" replace />} />
             <Route path="/news" element={<NewsImpact />} />
+            <Route path="/binary" element={<BinaryHome />} />
+            <Route path="/binary/reels" element={<BinaryReels />} />
+            <Route path="/binary/posts" element={<BinaryPosts />} />
+            <Route path="/binary/:courseId" element={<BinaryCourse />} />
+            <Route path="/binary/:courseId/:slug" element={<BinaryLesson />} />
             <Route
               path="/admin"
               element={
@@ -52,6 +68,14 @@ export default function App() {
               element={
                 <AdminRoute>
                   <PostEditor />
+                </AdminRoute>
+              }
+            />
+            <Route
+              path="/admin/binary/:courseId/:slug?"
+              element={
+                <AdminRoute>
+                  <LessonEditor />
                 </AdminRoute>
               }
             />

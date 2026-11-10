@@ -1,0 +1,11 @@
+{
+ "key": "normalMarket",
+ "bn": {
+  "title": "স্বাভাবিক মার্কেট",
+  "content": "<p class=\"bg-warning\">আমরা স্ট্রং ক্যান্ডেল দেখেছি। এবার শিখব স্ট্রং মার্কেট, অর্থাৎ মার্কেট দেখে কীভাবে বুঝব বায়ার বা সেলারের মার্কেট স্ট্রং কি না।</p><p>ছোটবেলায় আমরা কৃষক ও তার ছেলেদের গল্প শুনেছি বা পড়েছি। কৃষক এক ছেলেকে একটা লাঠি দিয়ে ভাঙতে বললেন, সে সহজেই ভেঙে ফেলল। এরপর ৩–৪টি লাঠি একসঙ্গে বেঁধে দিলেন, কিন্তু সে ভাঙতে পারল না। কারণ অনেকগুলো শক্ত লাঠি একসঙ্গে থাকলে তা ভাঙা সহজ নয়। এই গল্প থেকে আমরা সহজেই বুঝতে পারব স্ট্রং মার্কেট কী।</p><p>একটা স্ট্রং ক্যান্ডেল দেখে মার্কেট স্ট্রং কি না বোঝা যায় না। কিন্তু অনেকগুলো স্ট্রং ক্যান্ডেল একসঙ্গে থাকলে আমরা সেটাকে স্ট্রং মার্কেট ধরতে পারি। অর্থাৎ অনেকগুলো স্ট্রং ক্যান্ডেলের যোগফলই স্ট্রং মার্কেট।</p><div data-sketch=\"strongMarket\"></div><h5>নিচের চিত্রে বিষয়টি বোঝানো হলো।</h5><img src=\"/binary/img/otc/StrongMarket/StrongMarket.png\" alt=\"Strong market\"><h5 class=\"bg-warning\">কমপক্ষে ৩টি বা তার বেশি স্ট্রং ক্যান্ডেলের যোগফল মিলে আমরা স্ট্রং মার্কেট ধরব।</h5>"
+ },
+ "en": {
+  "title": "Normal Market",
+  "content": "<p class=\"bg-warning\">We have seen strong candles. Now we will learn about a strong market, that is, how to tell by looking at the market whether the buyer's or seller's market is strong.</p><p>As children, we heard or read the story of the farmer and his sons. The farmer gave one son a stick and asked him to break it, and he broke it easily. Then he tied 3–4 sticks together, but the son could not break them. Because when many strong sticks are together, they are not easy to break. From this story we can easily understand what a strong market is.</p><p>You cannot tell whether the market is strong by looking at one strong candle. But when many strong candles are together, we can count it as a strong market. In other words, the sum of many strong candles is a strong market.</p><div data-sketch=\"strongMarket\"></div><h5>This is shown in the picture below.</h5><img src=\"/binary/img/otc/StrongMarket/StrongMarket.png\" alt=\"Strong market\"><h5 class=\"bg-warning\">We will count a strong market when at least 3 or more strong candles add up together.</h5>"
+ }
+}

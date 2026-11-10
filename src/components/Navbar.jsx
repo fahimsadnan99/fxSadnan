@@ -7,14 +7,17 @@ import { useLang } from '../context/LangContext'
 import LangToggle from './LangToggle'
 import Logo from './Logo'
 import AdminCodeModal from './AdminCodeModal'
+import MarketToggle from './MarketToggle'
+import { marketOf } from '../binary/sections'
 
 export default function Navbar() {
   const { user, isAdmin } = useAuth()
-  const { t } = useLang()
+  const { lang, t } = useLang()
   const [askCode, setAskCode] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const navRef = useRef(null)
   const { pathname } = useLocation()
+  const market = marketOf(pathname)
 
   // Close the mobile dropdown on navigation, outside tap or Escape
   useEffect(() => setMenuOpen(false), [pathname])
@@ -38,6 +41,7 @@ export default function Navbar() {
         <Link to="/" className="brand" aria-label="FxSadnan home" onClick={() => window.scrollTo(0, 0)}>
           <Logo />
         </Link>
+        <MarketToggle />
         <button
           type="button"
           className="btn btn-ghost btn-sm nav-menu-btn"
@@ -53,15 +57,20 @@ export default function Navbar() {
           {t('menu')}
         </button>
         <div id="nav-menu" className={`nav-right${menuOpen ? ' open' : ''}`}>
-          <NavLink to="/reels" className="btn btn-ghost btn-sm nav-link">
-            {t('reels')}
-          </NavLink>
-          <NavLink to="/posts" className="btn btn-ghost btn-sm nav-link">
-            {t('posts')}
-          </NavLink>
-          <NavLink to="/news" className="btn btn-ghost btn-sm nav-link">
-            {t('news')}
-          </NavLink>
+          {market === 'home' ? (
+            <NavLink to="/news" className="btn btn-ghost btn-sm nav-link">
+              {t('news')}
+            </NavLink>
+          ) : (
+            <>
+              <NavLink to={`/${market}/reels`} className="btn btn-ghost btn-sm nav-link">
+                {t('reels')}
+              </NavLink>
+              <NavLink to={`/${market}/posts`} className="btn btn-ghost btn-sm nav-link">
+                {t('posts')}
+              </NavLink>
+            </>
+          )}
           <LangToggle />
           {isAdmin ? (
             <Link to="/admin" className="btn btn-ghost btn-sm">

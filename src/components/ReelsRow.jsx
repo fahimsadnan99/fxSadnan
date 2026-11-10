@@ -11,7 +11,7 @@ export default function ReelsRow({ posts, title, grid = false }) {
   const [open, setOpen] = useState(null)
 
   const reels = posts
-    .map((post) => ({ post, v: pickVersion(post, lang), url: reelOf(post) }))
+    .map((post) => ({ post, v: pickVersion(post, lang), url: reelOf(post, lang) }))
     .filter(({ url }) => url)
 
   useEffect(() => {
