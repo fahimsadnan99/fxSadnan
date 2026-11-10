@@ -7,12 +7,14 @@ import { SIZES, withResponsiveImages } from '../lib/images'
 import Cover from '../components/Cover'
 import ReelPlayer from '../components/ReelPlayer'
 import Loader from '../components/Loader'
+import Lightbox, { imageFromEvent } from '../components/Lightbox'
 
 export default function PostPage() {
   const { id } = useParams()
   const { lang, t } = useLang()
   const [post, setPost] = useState(undefined)
   const [all, setAll] = useState([])
+  const [zoomed, setZoomed] = useState(null)
 
   // Fetched once; used to find the posts either side of this one.
   useEffect(() => {
@@ -38,6 +40,10 @@ export default function PostPage() {
   const i = all.findIndex((p) => p.id === post.id)
   const prev = i > 0 ? all[i - 1] : null
   const next = i >= 0 && i < all.length - 1 ? all[i + 1] : null
+  const openImage = (e) => {
+    const image = imageFromEvent(e)
+    if (image) setZoomed(image)
+  }
 
   return (
     <main className="page-pad">
@@ -74,7 +80,13 @@ export default function PostPage() {
             </div>
           )}
 
-          <div className="prose post-body" dangerouslySetInnerHTML={{ __html: withResponsiveImages(DOMPurify.sanitize(v.content)) }} />
+          {/* Images in the post open full screen on click or Enter */}
+          <div
+            className="prose post-body"
+            onClick={openImage}
+            onKeyDown={openImage}
+            dangerouslySetInnerHTML={{ __html: withResponsiveImages(DOMPurify.sanitize(v.content)) }}
+          />
 
           {v.keyPoints.length > 0 && (
             <aside className="keypoints">
@@ -111,6 +123,8 @@ export default function PostPage() {
           )}
         </div>
       </article>
+
+      {zoomed && <Lightbox image={zoomed} onClose={() => setZoomed(null)} />}
     </main>
   )
 }
