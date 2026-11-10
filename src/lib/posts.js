@@ -12,6 +12,7 @@ import {
 } from 'firebase/firestore'
 import { db } from '../firebase'
 import FOREX_REELS_BN from '../data/forexReelsBn.json'
+import FOREX_REELS_EN from '../data/forexReelsEn.json'
 
 // Post shape in Firestore:
 // {
@@ -88,11 +89,12 @@ export function pickVersion(post, lang) {
   return { ...emptyVersion(), ...post[other], lang: other, isFallback: true }
 }
 
-// A post's reel in the reader's language: Bangla readers get the Bangla reel (made in the reels
-// project, listed in data/forexReelsBn.json by post id) when there is one; otherwise the English reel.
-// bn.reelUrl is only a fallback for older posts that never got an English reel.
+// A post's reel in the reader's language. Reels made in the reels project (Trader Sadnan's own voice)
+// are listed by post id in data/forexReelsBn.json and data/forexReelsEn.json and win over the URLs
+// stored on the post. Bangla readers fall back to the English reel; bn.reelUrl is only a fallback
+// for older posts that never got an English reel.
 export const reelOf = (post, lang) =>
-  (lang === 'bn' && FOREX_REELS_BN[post.id]) || post.en?.reelUrl || post.bn?.reelUrl || ''
+  (lang === 'bn' && FOREX_REELS_BN[post.id]) || FOREX_REELS_EN[post.id] || post.en?.reelUrl || post.bn?.reelUrl || ''
 
 export function formatDate(timestamp, lang) {
   if (!timestamp?.toDate) return ''
