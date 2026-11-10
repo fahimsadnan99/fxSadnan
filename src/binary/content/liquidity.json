@@ -1,0 +1,11 @@
+{
+ "key": "liquidity",
+ "bn": {
+  "title": "লিকুইডিটি",
+  "content": "<p>লিকুইডিটি (Liquidity) বোঝায়, বাজারে আপনি কত সহজে Buy বা Sell করতে পারছেন।</p><p>অনেক মানুষ যদি একই সময়ে Buy ও Sell করতে চায় এবং অনেক অর্ডার থাকে, তাহলে মার্কেটকে “Liquid” বলা হয়।</p><p>অর্ডার কম থাকলে মার্কেট “Illiquid” হয়, যেখানে ট্রেড করা কঠিন।</p><div data-sketch=\"liquidityBasic\"></div><h5>📊 মার্কেটে লিকুইডিটি কীভাবে কাজ করে?</h5><p>ধরুন, আপনি EUR/USD-তে একটি Buy ট্রেড দিতে চান। মার্কেটে যদি অনেক মানুষ EUR/USD সেল করতে চায়, তাহলে আপনি খুব সহজেই আপনার Buy ট্রেড execute করতে পারবেন। এটাই লিকুইডিটি।</p><h5>💡 বাস্তব জীবনের সঙ্গে মিলিয়ে দেখা যাক</h5><p>ধরুন, আপনি বাজারে পেঁয়াজ কিনতে গেছেন। অনেক দোকানে পেঁয়াজ বিক্রি হচ্ছে এবং দামও ঠিকঠাক, তাহলে আপনি সহজেই কিনতে পারবেন। এটা হাই লিকুইডিটি।</p><p>কিন্তু যদি মাত্র ১–২টি দোকানে পেঁয়াজ থাকে এবং তারা চড়া দাম চায়, তাহলে হয়তো আপনি কিনতেই পারবেন না। এটা লো লিকুইডিটি।</p><p>ট্রেডিং মার্কেটেও একই ব্যাপার। লিকুইডিটি বেশি মানে অনেক “বায়ার” ও “সেলার” আছে, তাই আপনি সহজেই ট্রেড করতে পারবেন।</p>"
+ },
+ "en": {
+  "title": "Liquidity",
+  "content": "<p>Liquidity refers to how easily you can Buy or Sell in the market.</p><p>If many people want to Buy and Sell at the same time and there are many orders, the market is called “Liquid”.</p><p>When there are few orders, the market is “Illiquid”, and trading there is difficult.</p><div data-sketch=\"liquidityBasic\"></div><h5>📊 How does liquidity work in the market?</h5><p>Suppose you want to place a Buy trade on EUR/USD. If many people in the market want to sell EUR/USD, you will be able to execute your Buy trade very easily. That is liquidity.</p><h5>💡 Let's compare it with real life</h5><p>Suppose you go to the market to buy onions. If many shops are selling onions and the prices are fair, you can buy easily. That is high liquidity.</p><p>But if only 1–2 shops have onions and they ask a steep price, you may not be able to buy at all. That is low liquidity.</p><p>It is the same in the trading market. High liquidity means there are many “buyers” and “sellers”, so you can trade easily.</p>"
+ }
+}

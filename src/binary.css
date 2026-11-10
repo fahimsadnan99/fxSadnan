@@ -1,0 +1,1224 @@
+/* Forex | Binary switch, the market choice on the home page, and the Binary course section.
+   Uses the tokens from index.css so both markets look like one site. */
+
+/* ============ Forex | Binary switch ============ */
+.market-toggle {
+  display: inline-flex;
+  margin-right: auto;
+  padding: 3px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--surface);
+}
+.market-toggle a {
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  transition: background 0.2s, color 0.2s;
+}
+.market-toggle a:hover {
+  color: var(--text);
+}
+.market-toggle a.active {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: #1a1204;
+  box-shadow: 0 4px 16px rgba(224, 180, 90, 0.3);
+}
+@media (max-width: 480px) {
+  .market-toggle a {
+    padding: 4px 10px;
+    font-size: 0.78rem;
+  }
+}
+@media (max-width: 359px) {
+  .market-toggle a {
+    padding: 4px 7px;
+    font-size: 0.72rem;
+  }
+}
+
+/* ============ Home: choose a market ============ */
+.market-choice-title {
+  margin: 0 0 14px;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+.market-choice {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  max-width: 820px;
+  margin: 0 auto 28px;
+  text-align: left;
+}
+@media (min-width: 640px) {
+  .market-choice {
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+}
+.market-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    'mark name'
+    'desc desc'
+    'more more';
+  align-items: center;
+  gap: 10px 14px;
+  padding: 20px 22px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-strong);
+  background: linear-gradient(180deg, rgba(18, 27, 48, 0.92), rgba(13, 20, 36, 0.88));
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow);
+  color: var(--text);
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+.market-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(46, 230, 166, 0.45);
+  box-shadow: var(--glow), var(--shadow-lg);
+}
+.market-binary:hover {
+  border-color: rgba(224, 180, 90, 0.55);
+  box-shadow: 0 0 0 1px rgba(224, 180, 90, 0.35), 0 12px 40px rgba(224, 180, 90, 0.15), var(--shadow-lg);
+}
+.market-card-mark {
+  grid-area: mark;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: var(--on-accent);
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  box-shadow: 0 6px 20px rgba(46, 230, 166, 0.3);
+}
+.market-binary .market-card-mark {
+  color: #1a1204;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  box-shadow: 0 6px 20px rgba(224, 180, 90, 0.3);
+}
+.market-card-name {
+  grid-area: name;
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 700;
+}
+.market-card-desc {
+  grid-area: desc;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.market-card .read-more {
+  grid-area: more;
+}
+.market-binary .read-more {
+  color: var(--gold-light);
+}
+.market-card:hover .read-more span {
+  transform: translateX(5px);
+}
+
+/* ============ Binary section ============ */
+.binary-title {
+  margin: 16px 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 7vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1.25;
+  background: linear-gradient(90deg, var(--gold-light), var(--gold) 45%, var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.binary-intro {
+  max-width: 640px;
+  margin-inline: auto;
+}
+
+@media (min-width: 1024px) {
+  .binary-parts {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+  }
+  .binary-parts .card-title {
+    font-size: 1.15rem;
+  }
+}
+.binary-risk {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 20px;
+  padding: 16px 20px;
+  border: 1px solid rgba(234, 57, 67, 0.3);
+  border-left: 3px solid var(--bear);
+  background: rgba(234, 57, 67, 0.06);
+  border-radius: var(--radius-sm);
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+.binary-risk p {
+  flex: 1 1 320px;
+  margin: 0;
+}
+.binary-lang-note {
+  margin: 0 0 28px;
+}
+
+/* Lesson cards: the animated cover fills the 16:9 image area */
+.lesson-card .card-img .lcover {
+  height: 100%;
+  transition: transform 0.7s ease;
+}
+.lesson-card:hover .card-img .lcover {
+  transform: scale(1.04);
+}
+.lesson-card .card-title {
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+
+.lesson-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 20px;
+  margin-bottom: 22px;
+}
+.lesson-toolbar p {
+  margin: 0;
+}
+.lesson-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1 1 260px;
+  max-width: 420px;
+  padding: 0 16px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--muted);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.lesson-search:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+.lesson-search svg {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.lesson-search input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 0;
+  border: 0;
+  background: none;
+  outline: none;
+}
+
+/* Lesson body: the ported Bangla lessons inside the blog's .prose */
+.lesson-body h4,
+.lesson-body h5,
+.lesson-body h6 {
+  font-family: var(--font-display);
+  color: var(--text);
+  line-height: 1.5;
+}
+.lesson-body h4 {
+  font-size: 1.3rem;
+  margin: 1.6em 0 0.6em;
+}
+.lesson-body h5 {
+  font-size: 1.18rem;
+  margin: 1.8em 0 0.7em;
+  padding-left: 14px;
+  border-left: 3px solid var(--accent);
+}
+.lesson-body h6 {
+  font-size: 1.05rem;
+  margin: 1.4em 0 0.5em;
+  color: var(--gold-light);
+}
+.lesson-body hr {
+  margin: 2.4em 0;
+  border: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-strong), transparent);
+}
+/* Lesson photos keep their own size (small candle shots stay sharp) and open larger on click */
+.prose.lesson-body img {
+  width: auto !important;
+  max-width: 100%;
+  margin: 1.6em auto;
+  padding: 6px;
+  cursor: zoom-in;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.prose.lesson-body img:hover {
+  border-color: rgba(46, 230, 166, 0.45);
+  box-shadow: var(--glow);
+}
+/* Emphasis boxes the lessons were written with (Bootstrap colour classes) */
+.lesson-body .bg-warning,
+.lesson-body .bg-danger {
+  display: block;
+  margin: 1.2em 0;
+  padding: 14px 18px;
+  color: var(--text);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+.lesson-body .bg-warning {
+  background: rgba(224, 180, 90, 0.1);
+  border-left: 3px solid var(--gold);
+}
+.lesson-body .bg-danger {
+  background: rgba(234, 57, 67, 0.1);
+  border-left: 3px solid var(--bear);
+}
+.lesson-body span.bg-warning,
+.lesson-body span.bg-danger {
+  display: inline;
+  margin: 0;
+  padding: 1px 7px;
+  border-left: 0;
+  border-radius: 6px;
+}
+.lesson-body .text-danger {
+  color: #ff8a8f;
+}
+/* The standing "filter the long timeframe first" rule */
+.lesson-body p.lesson-rule {
+  position: relative;
+  margin: 0 0 1.6em;
+  padding: 14px 18px 14px 52px;
+  background: rgba(224, 180, 90, 0.08);
+  border: 1px solid rgba(224, 180, 90, 0.3);
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+}
+.lesson-body p.lesson-rule::before {
+  content: '!';
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: #1a1204;
+  font-weight: 800;
+  font-size: 0.85rem;
+  line-height: 1;
+}
+.lesson-body p.tip-note {
+  margin-top: -0.6em;
+  padding-left: 12px;
+  border-left: 2px solid var(--gold);
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+/* LessonContent wraps the HTML between sketches; the wrapper should not affect layout */
+.lesson-chunk {
+  display: contents;
+}
+/* Sketches inside the lesson editor */
+.editor-content .sketch-node {
+  max-width: 560px;
+  margin: 1.4em auto;
+  cursor: grab;
+}
+.editor-content .sketch-node .sketch {
+  margin: 0;
+}
+.editor-content .sketch-node.ProseMirror-selectednode .sketch {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Money Management tips */
+.lesson-body .lead-line {
+  font-size: 1.2rem;
+  color: var(--muted);
+}
+.lesson-body .tips {
+  list-style: none;
+  padding: 0;
+  margin: 1.4em 0;
+  counter-reset: tip;
+  display: grid;
+  gap: 14px;
+}
+.lesson-body .tip {
+  position: relative;
+  margin: 0;
+  padding: 18px 20px 18px 64px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  counter-increment: tip;
+}
+.lesson-body .tip::before {
+  content: counter(tip);
+  position: absolute;
+  left: 20px;
+  top: 16px;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--accent);
+}
+.lesson-body .tip__title {
+  margin: 0 0 8px;
+  font-size: 1.15rem;
+}
+.lesson-body .tip__text {
+  margin: 0 0 10px;
+}
+.lesson-body .tip__note {
+  margin: 0;
+  padding-left: 12px;
+  border-left: 2px solid var(--gold);
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+.lesson-body .closing-line {
+  margin-top: 1.6em;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Teaching sketches (Sketch.jsx), drawn in the site colours */
+.lesson-body .sketch {
+  margin: 1.8em 0;
+  overflow: hidden;
+  background: var(--surface-solid);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow);
+}
+.sketch__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.sketch__cap {
+  padding: 10px 14px 12px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+.sketch__cap b {
+  margin-right: 6px;
+  color: var(--gold);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.sk-grid line {
+  stroke: rgba(255, 255, 255, 0.07);
+  stroke-width: 1;
+}
+.sk-tone--bull {
+  --k: var(--bull);
+}
+.sk-tone--bear {
+  --k: var(--bear);
+}
+.sk-tone--amber {
+  --k: var(--gold);
+}
+.sk-tone--soft {
+  --k: var(--muted);
+}
+.sk-tone--text {
+  --k: var(--text);
+}
+.sk-candle line {
+  stroke: var(--k);
+  stroke-width: 1.8;
+}
+.sk-candle rect {
+  fill: var(--k);
+}
+.sk-zone rect {
+  fill: var(--k);
+  fill-opacity: 0.16;
+  stroke: var(--k);
+  stroke-opacity: 0.7;
+  stroke-width: 1;
+}
+.sk-box rect {
+  fill: var(--surface-2);
+  stroke: var(--k);
+  stroke-width: 1.2;
+}
+.sk-box--fill rect {
+  fill: var(--k);
+  fill-opacity: 0.55;
+  stroke: none;
+}
+.sk-box text {
+  fill: var(--text);
+  font-family: var(--font-body);
+  font-size: 11.5px;
+}
+.sk-line {
+  stroke: var(--k);
+  stroke-width: 1.4;
+}
+.sk-line--level {
+  stroke-dasharray: 6 4;
+}
+.sk-line--trend {
+  stroke-width: 1.6;
+}
+.sk-line--thin {
+  stroke-width: 1;
+}
+.sk-path {
+  fill: none;
+  stroke: var(--k);
+  stroke-width: 2.2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.sk-mark {
+  fill: none;
+  stroke: var(--k);
+  stroke-width: 1.8;
+}
+.sk-arrow line {
+  stroke: var(--k);
+  stroke-width: 1.6;
+}
+.sk-arrow polygon {
+  fill: var(--k);
+}
+.sk-text {
+  fill: var(--k);
+  font-family: var(--font-body);
+  font-size: 11.5px;
+  font-weight: 500;
+  paint-order: stroke;
+  stroke: var(--surface-solid);
+  stroke-width: 3px;
+  stroke-linejoin: round;
+}
+.sk-text--big {
+  font-size: 13.5px;
+  font-weight: 600;
+}
+@media (max-width: 640px) {
+  .sk-text,
+  .sk-box text {
+    font-size: 12.8px;
+  }
+  .sk-text--big {
+    font-size: 14.5px;
+  }
+}
+
+/* Enlarged lesson image */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 56px 12px 12px;
+  background: rgba(3, 6, 12, 0.92);
+  backdrop-filter: blur(6px);
+  cursor: zoom-out;
+}
+.lightbox .reel-close {
+  top: 12px;
+  right: 12px;
+}
+.lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-strong);
+  background: var(--surface-2);
+  cursor: default;
+}
+
+/* ============ Lesson covers (LessonCover.jsx): animated title images ============ */
+.lcover {
+  --cover-bg: #070c18;
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  container-type: inline-size;
+  isolation: isolate;
+  background:
+    radial-gradient(55% 75% at 88% 6%, hsl(var(--h) 75% 45% / 0.26), transparent 62%),
+    radial-gradient(45% 60% at 2% 100%, hsl(var(--h) 70% 40% / 0.14), transparent 65%),
+    linear-gradient(160deg, #0c1426, var(--cover-bg) 55%, #05080f);
+  color: var(--text);
+}
+/* faint chart grid, like the Forex covers */
+.lcover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 4.5cqw 4.5cqw;
+  mask-image: radial-gradient(ellipse at 60% 40%, #000 30%, transparent 80%);
+}
+.lcover--hero {
+  margin-bottom: 44px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+}
+@media (max-width: 639px) {
+  .lcover--hero {
+    margin-bottom: 28px;
+    border-radius: var(--radius-sm);
+  }
+}
+
+.lcover-left {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 5cqw;
+  width: 40cqw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.7cqw;
+}
+.lcover-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9cqw;
+  padding: 0.75cqw 1.7cqw;
+  border: 1px solid rgba(46, 230, 166, 0.35);
+  border-radius: 999px;
+  background: rgba(46, 230, 166, 0.08);
+  color: var(--accent);
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: 1.45cqw;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  white-space: nowrap;
+}
+.lcover-pill-dot {
+  width: 0.9cqw;
+  height: 0.9cqw;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 1.2cqw var(--accent);
+}
+.lcover-title {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  background: linear-gradient(90deg, var(--accent), #9af3cf 45%, var(--gold-light) 70%, var(--accent));
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0.6cqw 2cqw rgba(46, 230, 166, 0.18));
+}
+.lcover-title {
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+.lcover-title--md {
+  font-size: 8.4cqw;
+}
+.lcover-title--lg {
+  font-size: 6.4cqw;
+}
+.lcover-title--xl {
+  font-size: 5.1cqw;
+}
+.lcover-sub {
+  font-family: 'Hind Siliguri', sans-serif;
+  font-size: 2.6cqw;
+  font-weight: 600;
+  line-height: 1.35;
+  color: #c9d4e6;
+}
+.lcover-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8cqw;
+}
+.lcover-chips span {
+  padding: 0.45cqw 1.1cqw;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--muted);
+  font-size: 1.3cqw;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.lcover-chips span:first-child {
+  border-color: rgba(224, 180, 90, 0.45);
+  color: var(--gold-light);
+}
+
+.lcover-panel {
+  position: absolute;
+  top: 7.5cqw;
+  right: 4cqw;
+  bottom: 7.5cqw;
+  width: 51cqw;
+  display: grid;
+  place-items: center;
+  padding: 1.5cqw;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 2.2cqw;
+  background:
+    radial-gradient(80% 70% at 80% 0%, hsl(var(--h) 70% 50% / 0.12), transparent 70%),
+    rgba(255, 255, 255, 0.035);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 2cqw 5cqw rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+}
+.lcover-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.lcover .sk-text {
+  stroke: #0b1222;
+}
+.lcover-mark {
+  position: absolute;
+  right: 2.6cqw;
+  bottom: 1.7cqw;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.9cqw;
+  font-weight: 800;
+  color: #f4f7fc;
+  opacity: 0.9;
+}
+.lcover-mark i {
+  color: var(--gold);
+}
+
+/* Small covers (cards): drop the fine print, keep the headline readable */
+@container (max-width: 520px) {
+  .lcover .sk-text,
+  .lcover-chips,
+  .lcover-pill-lead {
+    display: none;
+  }
+  .lcover-left {
+    gap: 2.2cqw;
+  }
+  .lcover-pill {
+    font-size: 2.3cqw;
+    padding: 1cqw 2.2cqw;
+  }
+  .lcover-sub {
+    font-size: 3.6cqw;
+  }
+  .lcover-mark {
+    font-size: 2.8cqw;
+  }
+}
+
+/* The build-up: candles rise one by one, then levels, marks and labels; the cycle repeats.
+   --i (set in SketchSvg) is each element's place in that order. */
+@media (prefers-reduced-motion: no-preference) {
+  .lcover .sk-candle,
+  .lcover .sk-line,
+  .lcover .sk-path,
+  .lcover .sk-zone,
+  .lcover .sk-box,
+  .lcover .sk-mark,
+  .lcover .sk-arrow,
+  .lcover .sk-text {
+    animation-duration: 7s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    animation-delay: calc(var(--i, 0) * 0.22s);
+  }
+  .lcover .sk-candle {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+    animation-name: lc-candle;
+    animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .lcover .sk-line {
+    transform-box: fill-box;
+    transform-origin: 0 50%;
+    animation-name: lc-line;
+    animation-delay: calc(var(--i, 0) * 0.22s + 0.5s);
+  }
+  .lcover .sk-path {
+    stroke-dasharray: 1;
+    animation-name: lc-draw;
+    animation-delay: calc(var(--i, 0) * 0.22s + 0.4s);
+  }
+  .lcover .sk-zone,
+  .lcover .sk-box {
+    animation-name: lc-fade;
+  }
+  .lcover .sk-mark {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation-name: lc-pop;
+  }
+  .lcover .sk-arrow,
+  .lcover .sk-text {
+    animation-name: lc-fade;
+  }
+  .lcover-title {
+    animation: lc-shine 7s ease-in-out infinite;
+  }
+  .lcover-pill-dot {
+    animation: pulse 2s infinite;
+  }
+  /* Off screen: hold still */
+  .lcover:not([data-play]) *,
+  .lcover:not([data-play]) {
+    animation-play-state: paused !important;
+  }
+}
+@keyframes lc-candle {
+  0% {
+    opacity: 0;
+    transform: scaleY(0.05);
+  }
+  7%,
+  82% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  92%,
+  100% {
+    opacity: 0;
+    transform: scaleY(1);
+  }
+}
+@keyframes lc-line {
+  0% {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  9%,
+  82% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+  92%,
+  100% {
+    opacity: 0;
+    transform: scaleX(1);
+  }
+}
+@keyframes lc-draw {
+  0% {
+    stroke-dashoffset: 1;
+    opacity: 1;
+  }
+  14%,
+  82% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  92%,
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}
+@keyframes lc-fade {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  8%,
+  82% {
+    opacity: 1;
+    transform: none;
+  }
+  92%,
+  100% {
+    opacity: 0;
+    transform: none;
+  }
+}
+@keyframes lc-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  8% {
+    opacity: 1;
+    transform: scale(1.18);
+  }
+  12%,
+  82% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  92%,
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+@keyframes lc-shine {
+  0%,
+  100% {
+    background-position: 0% 0;
+  }
+  50% {
+    background-position: 100% 0;
+  }
+}
+
+/* ============ Dashboard: Forex | Binary sections ============ */
+.market-toggle button {
+  padding: 5px 14px;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.market-toggle button:hover {
+  color: var(--text);
+}
+.market-toggle button.active {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: #1a1204;
+  box-shadow: 0 4px 16px rgba(224, 180, 90, 0.3);
+}
+.admin-section-toggle {
+  margin-right: 0;
+}
+.admin-section-toggle button {
+  padding: 8px 18px;
+  font-size: 0.92rem;
+}
+.admin-new {
+  margin-left: auto;
+}
+.binary-admin-thumb {
+  flex: none;
+  width: 150px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+@media (max-width: 560px) {
+  .binary-admin-thumb {
+    width: 100%;
+  }
+}
+
+/* ============ Course photos, animated (CourseCover.jsx) ============ */
+.ccover {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--surface-2);
+}
+/* The 4:3 photo, filling the box like object-fit: cover, so the titles stay on their spot */
+.ccover-frame {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  transform: translateY(-50%);
+  container-type: inline-size;
+}
+.ccover-img {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  transform-origin: 50% 45%;
+}
+.ccover-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(70% 90% at 100% 0%, hsl(var(--h) 85% 55% / 0.32), transparent 60%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+.ccover-shine {
+  position: absolute;
+  inset: -20% -60%;
+  background: linear-gradient(105deg, transparent 42%, rgba(255, 255, 255, 0.22) 50%, transparent 58%);
+  transform: translateX(-100%);
+  pointer-events: none;
+}
+/* The card's bottom fade would dim titles low on the photo (PSYCHOLOGY) */
+.binary-parts .card-img::after {
+  display: none;
+}
+/* Main image on a course or article page */
+.course-hero {
+  height: auto;
+  aspect-ratio: 4 / 3;
+  max-width: 640px;
+  margin: 0 auto 36px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg), 0 0 60px hsl(var(--h) 80% 45% / 0.15);
+}
+@media (max-width: 639px) {
+  .course-hero {
+    margin-bottom: 24px;
+    border-radius: var(--radius-sm);
+  }
+}
+
+/* Titles drawn over the photo */
+.cc-line {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  line-height: 1;
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #fff;
+  pointer-events: none;
+}
+.cc-l {
+  display: inline-block;
+}
+.cc-l i {
+  display: inline-block;
+  font-style: normal;
+}
+.cc-space {
+  display: inline-block;
+  width: 0.3em;
+}
+.cc-pa {
+  text-shadow: 0 0.04em 0.12em rgba(0, 0, 0, 0.5);
+}
+.cc-mc,
+.cc-mc-sub {
+  text-shadow: 0 0.05em 0.2em rgba(0, 0, 0, 0.75);
+}
+.cc-mc-sub {
+  font-weight: 600;
+}
+.cc-psy {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-shadow: 0 0.04em 0.25em rgba(0, 0, 0, 0.8);
+}
+/* Marquee letters: orange "Money" and pink "Management" with an extruded edge */
+.cc-money,
+.cc-mgmt {
+  font-family: 'Playfair Display', serif;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+.cc-money {
+  color: #ffc23a;
+  text-shadow:
+    0 0.04em 0 #c9700c,
+    0 0.08em 0 #8a4407,
+    0 0.12em 0 #5c2b04,
+    0 0 0.35em rgba(255, 170, 40, 0.75);
+}
+.cc-mgmt {
+  font-style: italic;
+  color: #ffb3ee;
+  text-shadow:
+    0 0.04em 0 #c2479f,
+    0 0.08em 0 #7d2a68,
+    0 0 0.35em rgba(255, 120, 220, 0.75);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ccover-img {
+    animation: cc-drift 12s ease-in-out infinite alternate;
+  }
+  .ccover-glow {
+    animation: cc-glow 4s ease-in-out infinite alternate;
+  }
+  .ccover-shine {
+    animation: cc-shine 5s ease-in-out infinite;
+  }
+  /* letters rise in one by one... */
+  .cc-l {
+    animation: cc-in 0.75s cubic-bezier(0.2, 0.9, 0.25, 1.2) both;
+    animation-delay: calc(var(--i) * 70ms);
+  }
+  /* ...then keep a slow wave and a colour sweep, letter after letter */
+  .cc-l i {
+    animation:
+      cc-wave 3.2s ease-in-out infinite,
+      var(--sweep, cc-sweep-green) 4s ease-in-out infinite;
+    animation-delay: calc(1.2s + var(--i) * 90ms), calc(1.2s + var(--i) * 110ms);
+  }
+  .cc-mc i,
+  .cc-mc-sub i {
+    --sweep: cc-sweep-gold;
+  }
+  .cc-psy i {
+    --sweep: cc-sweep-cyan;
+  }
+  .cc-money i,
+  .cc-mgmt i {
+    --sweep: cc-bulb;
+  }
+  /* neighbouring marquee letters blink out of step */
+  .cc-money .cc-l:nth-child(even) i,
+  .cc-mgmt .cc-l:nth-child(even) i {
+    animation-delay: calc(1.2s + var(--i) * 90ms), 1.7s;
+  }
+  .cc-money .cc-l:nth-child(odd) i,
+  .cc-mgmt .cc-l:nth-child(odd) i {
+    animation-delay: calc(1.2s + var(--i) * 90ms), 1.2s;
+  }
+  .ccover:not([data-play]),
+  .ccover:not([data-play]) * {
+    animation-play-state: paused !important;
+  }
+}
+@keyframes cc-drift {
+  0% {
+    transform: scale(1.02) translate(1%, 0.5%);
+  }
+  50% {
+    transform: scale(1.09) translate(-1.2%, -0.8%);
+  }
+  100% {
+    transform: scale(1.13) translate(0.8%, -1.5%);
+  }
+}
+@keyframes cc-glow {
+  from {
+    opacity: 0.45;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes cc-shine {
+  0%,
+  50% {
+    transform: translateX(-100%);
+  }
+  80%,
+  100% {
+    transform: translateX(100%);
+  }
+}
+@keyframes cc-in {
+  from {
+    opacity: 0;
+    transform: translateY(45%) scale(0.5) rotate(-8deg);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+@keyframes cc-wave {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-9%);
+  }
+}
+@keyframes cc-sweep-green {
+  0%,
+  35%,
+  100% {
+    color: #fff;
+  }
+  15% {
+    color: #5ff5bf;
+    text-shadow: 0 0 0.35em rgba(46, 230, 166, 0.9);
+  }
+}
+@keyframes cc-sweep-gold {
+  0%,
+  35%,
+  100% {
+    color: #fff;
+  }
+  15% {
+    color: #ffd98a;
+    text-shadow: 0 0 0.35em rgba(224, 180, 90, 0.95);
+  }
+}
+@keyframes cc-sweep-cyan {
+  0%,
+  35%,
+  100% {
+    color: #fff;
+  }
+  15% {
+    color: #8ff7ff;
+    text-shadow: 0 0 0.4em rgba(80, 230, 255, 0.95);
+  }
+}
+@keyframes cc-bulb {
+  0%,
+  45%,
+  100% {
+    filter: brightness(1);
+  }
+  20% {
+    filter: brightness(1.45) saturate(1.2);
+  }
+}

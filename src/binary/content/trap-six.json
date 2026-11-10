@@ -1,0 +1,11 @@
+{
+ "key": "trapSix",
+ "bn": {
+  "title": "ট্র্যাপ ৬",
+  "content": "<p class=\"lesson-rule\">সব ধরনের ট্রেড করতে হলে আমাদের আগে লং টাইমফ্রেম দেখে ফিল্টার করে নিতে হবে, তার পর আমরা ফিল্টারের দিকের সাথে সব ধরনের ট্রেড + ট্র্যাপ ব্যবহার করবো।</p><p>ট্র্যাপ ৬ সবকিছুতে ট্র্যাপ ৫-এর মতো। পার্থক্য শুধু এটুকু যে, ক্যান্ডেলটি তৈরি হওয়ার সময় ঝাঁকি দিয়ে দিয়ে তৈরি হয়। অর্থাৎ মার্কেট লিকুইডিটি কালেক্ট করতে করতে উপরের দিকে যায়। আর ক্যান্ডেল রেড হলে ঝাঁকি দিয়ে দিয়ে নিচের দিকে আসে এবং ট্রেন্ড লাইন বা সেলার-বায়ার এরিয়া ব্রেক করে।</p><p>এ ক্ষেত্রে ট্র্যাপ ৬-এ ট্রেড করতে হলে ট্র্যাপ ৫-এর মতোই লিকুইডিটি দেখতে হবে এবং মার্কেট বদলেছে কি না তা দেখতে হবে। এরিয়া চার্ট অথবা ৫ সেকেন্ড কনফার্মেশন দেখে তারপর ট্রেড করতে হবে।</p><div data-sketch=\"trapSix\"></div>"
+ },
+ "en": {
+  "title": "Trap 6",
+  "content": "<p class=\"lesson-rule\">Before taking any kind of trade, we first have to filter by looking at the long timeframe; then we'll use every type of trade + trap in the direction of that filter.</p><p>Trap 6 is like trap 5 in every way. The only difference is that the candle forms with jerks as it builds. In other words, the market goes up while collecting liquidity along the way. And if the candle is red, it comes down with jerks and breaks the trend line or the seller-buyer area.</p><p>In this case, to trade trap 6 you have to look at liquidity just like in trap 5 and check whether the market has changed. You have to check the area chart or the 5-second confirmation and then trade.</p><div data-sketch=\"trapSix\"></div>"
+ }
+}

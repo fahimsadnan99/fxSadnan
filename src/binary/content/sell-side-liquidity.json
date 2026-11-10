@@ -1,0 +1,11 @@
+{
+ "key": "sellSideLiquidity",
+ "bn": {
+  "title": "এস এস লিকুইডিটি (সেল সাইড)",
+  "content": "<h5>Sell-side Liquidity Hunt (Up then Drop)</h5><p>সিচুয়েশন:</p><p>মার্কেট একটি রেজিস্ট্যান্স এরিয়ায় ঘোরাফেরা করছে।</p><p>অনেক রিটেইল ট্রেডার (আমরা যারা ট্রেড করি) এখানে সেল ট্রেড নিচ্ছে।</p><p>তারা রেজিস্ট্যান্স থেকে ডাউনে ট্রেড করে।</p><p>স্মার্ট ট্রেডার মার্কেটকে উপরে ঠেলে দেয় → SL হিট করায়, অর্থাৎ বিপরীতে নিয়ে যায় → লিকুইডিটি নেয় → তারপর ড্রপ করে।</p><img src=\"/binary/img/otc/SellSideLiquidity/T1.jpg\" alt=\"Sell Side Liquidity\"><img src=\"/binary/img/otc/SellSideLiquidity/T2.jpg\" alt=\"Sell Side Liquidity\"><div data-sketch=\"sellSweep\"></div>"
+ },
+ "en": {
+  "title": "SS Liquidity (Sell Side)",
+  "content": "<h5>Sell-side Liquidity Hunt (Up then Drop)</h5><p>Situation:</p><p>The market is moving around in a resistance area.</p><p>Many retail traders (those of us who trade) are taking sell trades here.</p><p>They trade down from resistance.</p><p>Smart traders push the market up → make it hit the SL, meaning they take it against them → take the liquidity → then drop it.</p><img src=\"/binary/img/otc/SellSideLiquidity/T1.jpg\" alt=\"Sell Side Liquidity\"><img src=\"/binary/img/otc/SellSideLiquidity/T2.jpg\" alt=\"Sell Side Liquidity\"><div data-sketch=\"sellSweep\"></div>"
+ }
+}

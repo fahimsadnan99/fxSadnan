@@ -1,0 +1,11 @@
+{
+ "key": "buySideLiquidity",
+ "bn": {
+  "title": "বি এস লিকুইডিটি (বাই সাইড)",
+  "content": "<h5>Buy-side Liquidity Hunt (Down then Up)</h5><p>সিচুয়েশন:</p><p>মার্কেট একটি সাপোর্ট এরিয়ায় ঘোরাফেরা করছে।</p><p>অনেক রিটেইল ট্রেডার (আমরা যারা ট্রেড করি) এখানে বাই ট্রেড নিচ্ছে।</p><p>তারা সাপোর্ট থেকে আপে ট্রেড করে।</p><p>স্মার্ট ট্রেডার মার্কেটকে নিচের দিকে ঠেলে দেয় → SL হিট করায়, অর্থাৎ বিপরীতে নিয়ে যায় → লিকুইডিটি নেয় → তারপর আপ করে।</p><img src=\"/binary/img/otc/BuySideLiquidity/T1.jpg\" alt=\"Sell Side Liquidity\"><img src=\"/binary/img/otc/BuySideLiquidity/T2.jpg\" alt=\"Sell Side Liquidity\"><div data-sketch=\"buySweep\"></div>"
+ },
+ "en": {
+  "title": "BS Liquidity (Buy Side)",
+  "content": "<h5>Buy-side Liquidity Hunt (Down then Up)</h5><p>Situation:</p><p>The market is moving around in a support area.</p><p>Many retail traders (those of us who trade) are taking buy trades here.</p><p>They trade up from support.</p><p>Smart traders push the market down → make it hit the SL, that is, take it the opposite way → take the liquidity → then move it up.</p><img src=\"/binary/img/otc/BuySideLiquidity/T1.jpg\" alt=\"Sell Side Liquidity\"><img src=\"/binary/img/otc/BuySideLiquidity/T2.jpg\" alt=\"Sell Side Liquidity\"><div data-sketch=\"buySweep\"></div>"
+ }
+}

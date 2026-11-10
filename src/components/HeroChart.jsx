@@ -1,11 +1,15 @@
 // Decorative candlestick chart drawn behind the home page masthead.
 // Uses a fixed seed so the chart looks the same on every visit.
-function makeCandles(count) {
-  let seed = 7
-  const rand = () => {
+function seeded(start) {
+  let seed = start
+  return () => {
     seed = (seed * 16807) % 2147483647
     return seed / 2147483647
   }
+}
+
+function makeCandles(count) {
+  const rand = seeded(7)
   const candles = []
   let price = 60
   for (let i = 0; i < count; i++) {

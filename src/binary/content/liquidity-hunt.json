@@ -1,0 +1,11 @@
+{
+ "key": "liquidityHunt",
+ "bn": {
+  "title": "লিকুইডিটি হান্ট",
+  "content": "<p>ব্যাংক, হেজ ফান্ড ও বিগ প্লেয়াররা জানে, বেশিরভাগ রিটেইল ট্রেডার (আমাদের মতো ছোট ট্রেডার) কোথায় SL রাখে। তারা সেই SL-গুলোকেই টার্গেট করে, কারণ SL = অর্ডার = লিকুইডিটি।</p><h5>🧠 বেসিক কনসেপ্ট</h5><p>রিটেইল ট্রেডাররা সাধারণত রেজিস্ট্যান্স থেকে সেল ট্রেড এবং সাপোর্টের দিক থেকে বাই ট্রেড নেয়। স্মার্ট ট্রেডার সেই বাই আর সেল করার জায়গায় মার্কেট পাঠায়, তাদের বিপরীতে নিয়ে যায় এবং নিজে উল্টো দিকে ট্রেড নেয়।</p><p>ইনফ্লুয়েন্সের এরিয়ায় লেভেলগুলো কাজ করলেও অন্য সব জায়গায় এটা আপনাকে লস করাবে, কারণ মার্কেট আপনার বিপরীতে যাবে।</p><div data-sketch=\"sellSweep\"></div><div data-sketch=\"buySweep\"></div><p>নিচের চিত্রগুলো দেখে বিষয়টি বোঝার চেষ্টা করি।</p><img src=\"/binary/img/otc/LiquidityHunt/T1.jpg\" alt=\"Liquidity Hunt\"><img src=\"/binary/img/otc/LiquidityHunt/T2.jpg\" alt=\"Liquidity Hunt\"><img src=\"/binary/img/otc/LiquidityHunt/T3.jpg\" alt=\"Liquidity Hunt\"><img src=\"/binary/img/otc/LiquidityHunt/T4.jpg\" alt=\"Liquidity Hunt\"><img src=\"/binary/img/otc/LiquidityHunt/T5.jpg\" alt=\"Liquidity Hunt\">"
+ },
+ "en": {
+  "title": "Liquidity Hunt",
+  "content": "<p>Banks, hedge funds and big players know where most retail traders (small traders like us) place their SL. They target exactly those SLs, because SL = orders = liquidity.</p><h5>🧠 Basic Concept</h5><p>Retail traders usually take sell trades from resistance and buy trades from support. Smart traders send the market into those buy and sell spots, push it against them, and take trades in the opposite direction themselves.</p><p>The levels may work in an area of influence, but everywhere else this will make you lose, because the market will move against you.</p><div data-sketch=\"sellSweep\"></div><div data-sketch=\"buySweep\"></div><p>Let's try to understand this by looking at the images below.</p><img src=\"/binary/img/otc/LiquidityHunt/T1.jpg\" alt=\"Liquidity Hunt\"><img src=\"/binary/img/otc/LiquidityHunt/T2.jpg\" alt=\"Liquidity Hunt\"><img src=\"/binary/img/otc/LiquidityHunt/T3.jpg\" alt=\"Liquidity Hunt\"><img src=\"/binary/img/otc/LiquidityHunt/T4.jpg\" alt=\"Liquidity Hunt\"><img src=\"/binary/img/otc/LiquidityHunt/T5.jpg\" alt=\"Liquidity Hunt\">"
+ }
+}

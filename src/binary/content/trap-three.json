@@ -1,0 +1,11 @@
+{
+ "key": "trapThree",
+ "bn": {
+  "title": "ট্র্যাপ ৩",
+  "content": "<p class=\"lesson-rule\">সব ধরনের ট্রেড করতে হলে আমাদের আগে লং টাইমফ্রেম দেখে ফিল্টার করে নিতে হবে, তার পর আমরা ফিল্টারের দিকের সাথে সব ধরনের ট্রেড + ট্র্যাপ ব্যবহার করবো।</p><p>ট্র্যাপ থ্রি অনেকটা ট্র্যাপ ওয়ানের মতো। ট্র্যাপ ওয়ানে আমরা দেখেছি, উইকের ভেতরে অন্য পার্টি এক্সজস্ট, ডেড বা ইলিমিনেট হয়ে যায়, আর সেটা হয় অর্ডারফ্লোর সঙ্গে।</p><p>ট্র্যাপ থ্রিতেও উইকের ভেতরে অন্য পার্টি এক্সজস্ট হয়ে যায়। তবে এটা হয় স্ট্রাকচারের শুরুতে, এবং এখানে অর্ডারফ্লো না থাকলেও সমস্যা নেই।</p><p>উইকে এক্সজস্ট মানে হলো, উইক পার্টি যদি ক্যান্ডেল দিয়ে এক্সজস্ট হতে না পারে, তাহলে বিপরীত পার্টির ক্যান্ডেলের উইকের ভেতরে এক্সজস্ট হয়। সেই জায়গায় আমরা ট্র্যাপ ধরব। অর্থাৎ, ওই উইকের ভেতরে বিপরীত পার্টি ডেড বা ইলিমিনেট হয়ে যাওয়ার পর আমরা ট্র্যাপে ট্রেড করব।</p><p>নিচের চিত্রে বিষয়টি দেখানো হলো।</p><img src=\"/binary/img/otc/Trap3/T1.png\" alt=\"Trap Three Image\"><img src=\"/binary/img/otc/Trap3/T2.png\" alt=\"Trap Three Image\">"
+ },
+ "en": {
+  "title": "Trap 3",
+  "content": "<p class=\"lesson-rule\">Before taking any kind of trade, we first have to filter by looking at the long timeframe; then we'll use every type of trade + trap in the direction of that filter.</p><p>Trap three is a lot like trap one. In trap one we saw that the other party gets exhausted, dead or eliminated inside the wick, and that happens together with order flow.</p><p>In trap three, the other party also gets exhausted inside the wick. But this happens at the start of the structure, and here it's fine even if there is no order flow.</p><p>Exhausted in the wick means: if the weak party can't get exhausted through a candle, it gets exhausted inside the wick of the opposite party's candle. That's where we'll catch the trap. In other words, once the opposite party is dead or eliminated inside that wick, we'll trade the trap.</p><p>The images below show this.</p><img src=\"/binary/img/otc/Trap3/T1.png\" alt=\"Trap Three Image\"><img src=\"/binary/img/otc/Trap3/T2.png\" alt=\"Trap Three Image\">"
+ }
+}

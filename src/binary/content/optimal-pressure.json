@@ -1,0 +1,11 @@
+{
+ "key": "optimalPressure",
+ "bn": {
+  "title": "অপ্টিমাল প্রেসার",
+  "content": "<p>অপ্টিমাল প্রেসার দিয়ে আমরা একটা ক্যান্ডেলের মিডলে ট্রেড করতে পারি। বায়ার সাইড বা সেলার সাইডে প্রেসার ক্যালকুলেট করার সময় ৫ সেকেন্ড কনফার্মেশনে আমরা দেখি, এক পার্টির ক্যান্ডেল সাইজ অনেক বড় হচ্ছে, অনেক প্রেসারে যাচ্ছে এবং তার ডমিনেন্স বেশি।</p><p>অন্য পার্টির ডমিনেন্স কম, অর্থাৎ তার ক্যান্ডেল সাইজ ছোট ছোট হচ্ছে। এ অবস্থায় কোনো এক পার্টির ডমিনেন্স বেশি থাকলে, অর্থাৎ অপ্টিমাল প্রেসার থাকলে, মার্কেট পুল ব্যাক করে। মানে অন্য পার্টি ছোট ক্যান্ডেল নিয়ে এন্ট্রি করে, অর্থাৎ তার ডমিনেন্স কম থাকে।</p><p>তখন ৫ সেকেন্ডে আমরা আপের দিকে ট্রেড নিতে পারব, কারণ আপ সাইডে ডমিনেন্স বেশি। মার্কেট আমাদের এন্ট্রির উপরে ক্লোজ করবে।</p><p>ঠিক তেমনি ৫ সেকেন্ডে অপ্টিমাল প্রেসার ডাউনের দিকে দেখলে ডাউন সাইডের ক্যান্ডেলে মিডল ট্রেড করতে পারব।</p><img src=\"/binary/img/otc/Optimal/T1.jpg\" alt=\"Demand Area\"><img src=\"/binary/img/otc/Optimal/T2.jpg\" alt=\"Demand Area\"><div data-sketch=\"optimalPressure\"></div>"
+ },
+ "en": {
+  "title": "Optimal Pressure",
+  "content": "<p>With optimal pressure we can trade in the middle of a candle. When calculating pressure on the buyer side or seller side, in the 5-second confirmation we see that one party's candle size is getting much bigger, it is moving with a lot of pressure, and its dominance is higher.</p><p>The other party's dominance is lower, meaning its candle sizes are getting smaller and smaller. In this situation, when one party has higher dominance, that is, when there is optimal pressure, the market pulls back. This means the other party enters with small candles, that is, its dominance is low.</p><p>Then on the 5-second chart we can take a trade upward, because dominance is higher on the up side. The market will close above our entry.</p><p>In exactly the same way, if we see optimal pressure toward the downside on the 5-second chart, we can take a middle trade on the down-side candle.</p><img src=\"/binary/img/otc/Optimal/T1.jpg\" alt=\"Demand Area\"><img src=\"/binary/img/otc/Optimal/T2.jpg\" alt=\"Demand Area\"><div data-sketch=\"optimalPressure\"></div>"
+ }
+}

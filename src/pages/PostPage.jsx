@@ -31,7 +31,7 @@ export default function PostPage() {
   }, [id])
 
   if (post === undefined) return <Loader page />
-  if (post === null) return <Navigate to="/" replace />
+  if (post === null) return <Navigate to="/forex" replace />
 
   const v = pickVersion(post, lang)
   // Same order as the home feed (newest first): previous = newer, next = older.
@@ -42,7 +42,7 @@ export default function PostPage() {
   return (
     <main className="page-pad">
       <div className="container narrow post-top">
-        <Link to="/" className="back-link">
+        <Link to="/forex/posts" className="back-link">
           {t('back')}
         </Link>
       </div>
@@ -67,10 +67,10 @@ export default function PostPage() {
         <div className="container narrow">
           {v.isFallback && <p className="notice">{t('fallback')}</p>}
 
-          {reelOf(post) && (
+          {reelOf(post, lang) && (
             <div className="post-reel">
               <span className="kicker">🎬 {t('reels')}</span>
-              <ReelPlayer url={reelOf(post)} />
+              <ReelPlayer url={reelOf(post, lang)} />
             </div>
           )}
 
