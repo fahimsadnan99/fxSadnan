@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { useLang } from '../../context/LangContext'
 import { useAuth } from '../../context/AuthContext'
@@ -12,6 +12,7 @@ import LessonContent from '../../binary/LessonContent'
 import { coverKicker } from '../../binary/LessonCard'
 import ReelPlayer from '../../components/ReelPlayer'
 import { reelFor } from '../../binary/reels'
+import Lightbox, { imageFromEvent } from '../../components/Lightbox'
 
 // One Binary lesson (/binary/:courseId/:slug) or a single-page article (/binary/psychology),
 // laid out like a blog post, in the language the reader picked (the other one if it is empty).
@@ -54,10 +55,8 @@ export default function LessonPage() {
 
   // Chart images open larger on click or Enter.
   const openImage = (e) => {
-    if (e.target.tagName !== 'IMG') return
-    if (e.type === 'keydown' && e.key !== 'Enter' && e.key !== ' ') return
-    e.preventDefault()
-    setZoomed({ src: e.target.currentSrc || e.target.src, alt: e.target.alt || '' })
+    const image = imageFromEvent(e)
+    if (image) setZoomed(image)
   }
 
   return (
@@ -140,32 +139,5 @@ export default function LessonPage() {
 
       {zoomed && <Lightbox image={zoomed} onClose={() => setZoomed(null)} />}
     </main>
-  )
-}
-
-function Lightbox({ image, onClose }) {
-  const { t } = useLang()
-  const closeRef = useRef(null)
-
-  useEffect(() => {
-    const opener = document.activeElement
-    const onKey = (e) => e.key === 'Escape' && onClose()
-    document.addEventListener('keydown', onKey)
-    document.body.style.overflow = 'hidden'
-    closeRef.current?.focus()
-    return () => {
-      document.removeEventListener('keydown', onKey)
-      document.body.style.overflow = ''
-      opener?.focus?.()
-    }
-  }, [onClose])
-
-  return (
-    <div className="lightbox" role="dialog" aria-modal="true" aria-label={image.alt || t('enlarge')} onClick={onClose}>
-      <button ref={closeRef} className="reel-close" onClick={onClose} aria-label={t('close')}>
-        ✕
-      </button>
-      <img src={image.src} alt={image.alt} onClick={(e) => e.stopPropagation()} />
-    </div>
   )
 }
