@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-11T06:24:04+00:00",
+ "updated": "2026-11-11T17:08:37+00:00",
  "weeks": [
   [
    "2026-11-01",
@@ -1516,6 +1516,14 @@
    "previous": "3.80|1.4"
   },
   {
+   "date": "2026-11-11T05:35:00-05:00",
+   "country": "EUR",
+   "impact": "Low",
+   "title": "German 30-y Bond Auction",
+   "forecast": "",
+   "previous": "3.80|1.4"
+  },
+  {
    "date": "2026-11-11T08:00:00-05:00",
    "country": "CAD",
    "impact": "Holiday",
@@ -1634,6 +1642,22 @@
    "title": "ECB Economic Bulletin",
    "forecast": "",
    "previous": ""
+  },
+  {
+   "date": "2026-11-12T04:03:00-05:00",
+   "country": "CNY",
+   "impact": "Low",
+   "title": "M2 Money Supply y/y",
+   "forecast": "7.2%",
+   "previous": "7.2%"
+  },
+  {
+   "date": "2026-11-12T04:03:00-05:00",
+   "country": "CNY",
+   "impact": "Low",
+   "title": "New Loans",
+   "forecast": "80B",
+   "previous": "1080B"
   },
   {
    "date": "2026-11-12T05:00:00-05:00",
