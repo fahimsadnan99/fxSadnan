@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-12T11:14:02+00:00",
+ "updated": "2026-11-12T19:55:20+00:00",
  "weeks": [
   [
    "2026-11-01",
@@ -1946,6 +1946,14 @@
    "title": "FOMC Member Logan Speaks",
    "forecast": "",
    "previous": ""
+  },
+  {
+   "date": "2026-11-13T10:15:00-05:00",
+   "country": "USD",
+   "impact": "Low",
+   "title": "Mortgage Delinquencies",
+   "forecast": "",
+   "previous": "4.37%"
   },
   {
    "date": "2026-11-13T10:30:00-05:00",
