@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-12T19:55:20+00:00",
+ "updated": "2026-11-13T11:00:01+00:00",
  "weeks": [
   [
    "2026-11-01",
@@ -1850,6 +1850,22 @@
    "title": "Italian Trade Balance",
    "forecast": "2.84B",
    "previous": "1.77B"
+  },
+  {
+   "date": "2026-11-13T04:00:00-05:00",
+   "country": "CNY",
+   "impact": "Low",
+   "title": "M2 Money Supply y/y",
+   "forecast": "7.2%",
+   "previous": "7.2%"
+  },
+  {
+   "date": "2026-11-13T04:00:00-05:00",
+   "country": "CNY",
+   "impact": "Low",
+   "title": "New Loans",
+   "forecast": "80B",
+   "previous": "1080B"
   },
   {
    "date": "2026-11-13T05:00:00-05:00",
