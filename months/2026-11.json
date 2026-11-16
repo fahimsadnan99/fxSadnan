@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-15T06:34:02+00:00",
+ "updated": "2026-11-16T06:31:38+00:00",
  "weeks": [
   [
    "2026-11-01",
@@ -2208,6 +2208,14 @@
    "previous": ""
   },
   {
+   "date": "2026-11-16T14:15:00-05:00",
+   "country": "USD",
+   "impact": "Low",
+   "title": "FOMC Member Hammack Speaks",
+   "forecast": "",
+   "previous": ""
+  },
+  {
    "date": "2026-11-16T15:00:00-05:00",
    "country": "NZD",
    "impact": "Low",
@@ -2530,7 +2538,7 @@
   {
    "date": "2026-11-18T02:30:00-05:00",
    "country": "GBP",
-   "impact": "High",
+   "impact": "Medium",
    "title": "BOE Gov Bailey Speaks",
    "forecast": "",
    "previous": ""
@@ -2930,7 +2938,7 @@
   {
    "date": "2026-11-20T08:25:00-05:00",
    "country": "USD",
-   "impact": "Medium",
+   "impact": "Low",
    "title": "FOMC Member Waller Speaks",
    "forecast": "",
    "previous": ""
