@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-16T06:31:38+00:00",
+ "updated": "2026-11-16T19:37:16+00:00",
  "weeks": [
   [
    "2026-11-01",
@@ -2192,6 +2192,14 @@
    "previous": ""
   },
   {
+   "date": "2026-11-16T09:45:00-05:00",
+   "country": "USD",
+   "impact": "Low",
+   "title": "Cleveland Fed Inflation Expectations",
+   "forecast": "",
+   "previous": "3.3%"
+  },
+  {
    "date": "2026-11-16T09:48:00-05:00",
    "country": "USD",
    "impact": "Low",
@@ -2821,7 +2829,7 @@
    "impact": "Low",
    "title": "Natural Gas Storage",
    "forecast": "",
-   "previous": ""
+   "previous": "61B"
   },
   {
    "date": "2026-11-19T12:30:00-05:00",
