@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-16T19:37:16+00:00",
+ "updated": "2026-11-17T03:55:14+00:00",
  "weeks": [
   [
    "2026-11-01",
@@ -2248,6 +2248,30 @@
    "previous": ""
   },
   {
+   "date": "2026-11-16T18:10:00-05:00",
+   "country": "USD",
+   "impact": "Low",
+   "title": "FOMC Member Barkin Speaks",
+   "forecast": "",
+   "previous": ""
+  },
+  {
+   "date": "2026-11-16T18:30:00-05:00",
+   "country": "USD",
+   "impact": "Low",
+   "title": "FOMC Member Goolsbee Speaks",
+   "forecast": "",
+   "previous": ""
+  },
+  {
+   "date": "2026-11-16T19:00:00-05:00",
+   "country": "NZD",
+   "impact": "Medium",
+   "title": "RBNZ Gov Breman Speaks",
+   "forecast": "",
+   "previous": ""
+  },
+  {
    "date": "2026-11-16T19:30:00-05:00",
    "country": "AUD",
    "impact": "Low",
@@ -2268,7 +2292,7 @@
    "country": "JPY",
    "impact": "Low",
    "title": "Tertiary Industry Activity m/m",
-   "forecast": "0.0%",
+   "forecast": "0.1%",
    "previous": "-0.1%"
   },
   {
@@ -2284,7 +2308,7 @@
    "country": "GBP",
    "impact": "Low",
    "title": "Claimant Count Change",
-   "forecast": "28.1K",
+   "forecast": "25.4K",
    "previous": "30.3K"
   },
   {
@@ -2308,7 +2332,7 @@
    "country": "EUR",
    "impact": "Low",
    "title": "ZEW Economic Sentiment",
-   "forecast": "18.3",
+   "forecast": "19.1",
    "previous": "18.5"
   },
   {
@@ -2316,7 +2340,7 @@
    "country": "EUR",
    "impact": "Low",
    "title": "German ZEW Economic Sentiment",
-   "forecast": "28.3",
+   "forecast": "28.8",
    "previous": "28.1"
   },
   {
@@ -2332,7 +2356,7 @@
    "country": "CAD",
    "impact": "Low",
    "title": "Housing Starts",
-   "forecast": "243K",
+   "forecast": "241K",
    "previous": "249K"
   },
   {
@@ -2364,7 +2388,7 @@
    "country": "USD",
    "impact": "High",
    "title": "Retail Sales m/m",
-   "forecast": "0.2%",
+   "forecast": "0.1%",
    "previous": "0.8%"
   },
   {
@@ -2396,7 +2420,7 @@
    "country": "USD",
    "impact": "Low",
    "title": "Industrial Production m/m",
-   "forecast": "0.1%",
+   "forecast": "0.0%",
    "previous": "0.7%"
   },
   {
@@ -2476,7 +2500,7 @@
    "country": "JPY",
    "impact": "Low",
    "title": "Trade Balance",
-   "forecast": "-0.88T",
+   "forecast": "-0.90T",
    "previous": "-0.70T"
   },
   {
@@ -2484,7 +2508,7 @@
    "country": "AUD",
    "impact": "Medium",
    "title": "Wage Price Index q/q",
-   "forecast": "0.9%",
+   "forecast": "1.0%",
    "previous": "0.8%"
   },
   {
@@ -2628,7 +2652,7 @@
    "country": "USD",
    "impact": "Low",
    "title": "Pending Home Sales m/m",
-   "forecast": "-2.3%",
+   "forecast": "-2.1%",
    "previous": "-7.3%"
   },
   {
@@ -2638,6 +2662,14 @@
    "title": "Crude Oil Inventories",
    "forecast": "",
    "previous": "4.7M"
+  },
+  {
+   "date": "2026-11-18T12:15:00-05:00",
+   "country": "USD",
+   "impact": "Low",
+   "title": "FOMC Member Daly Speaks",
+   "forecast": "",
+   "previous": ""
   },
   {
    "date": "2026-11-18T12:30:00-05:00",
@@ -2708,7 +2740,7 @@
    "country": "JPY",
    "impact": "Low",
    "title": "Core Machinery Orders m/m",
-   "forecast": "1.4%",
+   "forecast": "1.3%",
    "previous": "5.2%"
   },
   {
@@ -2716,7 +2748,7 @@
    "country": "AUD",
    "impact": "High",
    "title": "Employment Change",
-   "forecast": "25.2K",
+   "forecast": "25.5K",
    "previous": "-39.3K"
   },
   {
@@ -2804,6 +2836,14 @@
    "country": "USD",
    "impact": "Low",
    "title": "FOMC Member Hammack Speaks",
+   "forecast": "",
+   "previous": ""
+  },
+  {
+   "date": "2026-11-19T09:25:00-05:00",
+   "country": "USD",
+   "impact": "Low",
+   "title": "FOMC Member Jefferson Speaks",
    "forecast": "",
    "previous": ""
   },
