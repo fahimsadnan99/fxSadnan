@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-17T03:55:14+00:00",
+ "updated": "2026-11-17T16:01:48+00:00",
  "weeks": [
   [
    "2026-11-01",
@@ -2424,6 +2424,14 @@
    "previous": "0.7%"
   },
   {
+   "date": "2026-11-17T09:29:00-05:00",
+   "country": "NZD",
+   "impact": "Low",
+   "title": "GDT Price Index",
+   "forecast": "",
+   "previous": "3.0%"
+  },
+  {
    "date": "2026-11-17T09:30:00-05:00",
    "country": "USD",
    "impact": "Low",
@@ -2652,7 +2660,7 @@
    "country": "USD",
    "impact": "Low",
    "title": "Pending Home Sales m/m",
-   "forecast": "-2.1%",
+   "forecast": "-1.8%",
    "previous": "-7.3%"
   },
   {
@@ -2660,7 +2668,7 @@
    "country": "USD",
    "impact": "Low",
    "title": "Crude Oil Inventories",
-   "forecast": "",
+   "forecast": "-0.3M",
    "previous": "4.7M"
   },
   {
