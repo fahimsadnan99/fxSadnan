@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-17T16:01:48+00:00",
+ "updated": "2026-11-18T00:57:52+00:00",
  "weeks": [
   [
    "2026-11-01",
@@ -2504,6 +2504,14 @@
    "previous": "-0.1%"
   },
   {
+   "date": "2026-11-17T18:39:00-05:00",
+   "country": "AUD",
+   "impact": "Low",
+   "title": "MI Leading Index m/m",
+   "forecast": "",
+   "previous": "-0.1%"
+  },
+  {
    "date": "2026-11-17T18:50:00-05:00",
    "country": "JPY",
    "impact": "Low",
@@ -2660,7 +2668,7 @@
    "country": "USD",
    "impact": "Low",
    "title": "Pending Home Sales m/m",
-   "forecast": "-1.8%",
+   "forecast": "-2.0%",
    "previous": "-7.3%"
   },
   {
@@ -2668,7 +2676,7 @@
    "country": "USD",
    "impact": "Low",
    "title": "Crude Oil Inventories",
-   "forecast": "-0.3M",
+   "forecast": "0.4M",
    "previous": "4.7M"
   },
   {
@@ -2804,7 +2812,7 @@
    "country": "CAD",
    "impact": "Low",
    "title": "IPPI m/m",
-   "forecast": "1.2%",
+   "forecast": "0.4%",
    "previous": "2.0%"
   },
   {
@@ -2812,7 +2820,7 @@
    "country": "CAD",
    "impact": "Low",
    "title": "RMPI m/m",
-   "forecast": "2.0%",
+   "forecast": "0.9%",
    "previous": "4.8%"
   },
   {
@@ -2828,7 +2836,7 @@
    "country": "USD",
    "impact": "Medium",
    "title": "Philly Fed Manufacturing Index",
-   "forecast": "19.2",
+   "forecast": "20.6",
    "previous": "20.9"
   },
   {
@@ -2836,7 +2844,7 @@
    "country": "USD",
    "impact": "Medium",
    "title": "Unemployment Claims",
-   "forecast": "199K",
+   "forecast": "198K",
    "previous": "200K"
   },
   {
@@ -2876,7 +2884,7 @@
    "country": "USD",
    "impact": "Low",
    "title": "Natural Gas Storage",
-   "forecast": "",
+   "forecast": "25B",
    "previous": "61B"
   },
   {
@@ -3028,7 +3036,7 @@
    "country": "USD",
    "impact": "Medium",
    "title": "Revised UoM Consumer Sentiment",
-   "forecast": "52.1",
+   "forecast": "51.7",
    "previous": "51.0"
   },
   {
