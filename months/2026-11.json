@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-18T00:57:52+00:00",
+ "updated": "2026-11-18T11:44:11+00:00",
  "weeks": [
   [
    "2026-11-01",
@@ -2774,6 +2774,14 @@
    "title": "Unemployment Rate",
    "forecast": "4.7%",
    "previous": "4.7%"
+  },
+  {
+   "date": "2026-11-19T02:02:00-05:00",
+   "country": "CNY",
+   "impact": "Low",
+   "title": "Foreign Direct Investment ytd/y",
+   "forecast": "",
+   "previous": "-4.3%"
   },
   {
    "date": "2026-11-19T04:00:00-05:00",
