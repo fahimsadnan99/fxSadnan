@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-19T20:39:19+00:00",
+ "updated": "2026-11-20T20:22:59+00:00",
  "weeks": [
   [
    "2026-11-01",
@@ -2320,6 +2320,14 @@
    "previous": "4.7%"
   },
   {
+   "date": "2026-11-17T02:00:00-05:00",
+   "country": "GBP",
+   "impact": "Low",
+   "title": "HMRC Payrolls Change",
+   "forecast": "9K",
+   "previous": "13K"
+  },
+  {
    "date": "2026-11-17T05:00:00-05:00",
    "country": "EUR",
    "impact": "Low",
@@ -3070,6 +3078,14 @@
    "title": "Revised UoM Inflation Expectations",
    "forecast": "",
    "previous": "4.3%"
+  },
+  {
+   "date": "2026-11-20T12:00:00-05:00",
+   "country": "USD",
+   "impact": "Medium",
+   "title": "President Trump Speaks",
+   "forecast": "",
+   "previous": ""
   },
   {
    "date": "2026-11-20T12:15:00-05:00",
