@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-24T23:54:11+00:00",
+ "updated": "2026-11-25T08:36:35+00:00",
  "weeks": [
   [
    "2026-11-01",
@@ -3528,7 +3528,7 @@
    "country": "USD",
    "impact": "Low",
    "title": "Crude Oil Inventories",
-   "forecast": "",
+   "forecast": "2.0M",
    "previous": "3.4M"
   },
   {
