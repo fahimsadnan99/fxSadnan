@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-25T19:18:06+00:00",
+ "updated": "2026-11-26T03:34:43+00:00",
  "weeks": [
   [
    "2026-11-01",
@@ -3602,6 +3602,14 @@
    "title": "Private Loans y/y",
    "forecast": "3.2%",
    "previous": "3.1%"
+  },
+  {
+   "date": "2026-11-26T04:15:00-05:00",
+   "country": "EUR",
+   "impact": "Low",
+   "title": "Euro Summit",
+   "forecast": "",
+   "previous": ""
   },
   {
    "date": "2026-11-26T05:30:00-05:00",
