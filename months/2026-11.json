@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26T03:34:43+00:00",
+ "updated": "2026-11-27T12:23:07+00:00",
  "weeks": [
   [
    "2026-11-01",
@@ -3706,6 +3706,14 @@
    "title": "German Unemployment Change",
    "forecast": "5K",
    "previous": "4K"
+  },
+  {
+   "date": "2026-11-27T05:05:00-05:00",
+   "country": "EUR",
+   "impact": "Low",
+   "title": "Italian 10-y Bond Auction",
+   "forecast": "",
+   "previous": "4.49|1.6"
   },
   {
    "date": "2026-11-27T05:33:00-05:00",
